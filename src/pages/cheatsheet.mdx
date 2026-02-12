@@ -1,0 +1,293 @@
+# Python Cheatsheet
+
+Een snel overzicht van alles wat je geleerd hebt. Klik op een onderwerp om het open te klappen.
+
+---
+
+## Basis
+
+<details>
+<summary><strong>Print</strong></summary>
+
+```python
+print("Hallo, wereld!")
+print("Naam:", naam)
+print(f"Ik ben {leeftijd} jaar oud.")
+```
+
+</details>
+
+<details>
+<summary><strong>Variabelen</strong></summary>
+
+```python
+naam = "Sara"          # str (tekst)
+leeftijd = 15          # int (geheel getal)
+lengte = 1.75          # float (decimaal)
+is_student = True      # bool (waar/niet waar)
+```
+
+</details>
+
+<details>
+<summary><strong>Rekenen</strong></summary>
+
+```python
+5 + 3      # 8    optellen
+10 - 4     # 6    aftrekken
+3 * 7      # 21   vermenigvuldigen
+10 / 3     # 3.33 delen
+10 // 3    # 3    geheel delen
+10 % 3     # 1    rest (modulo)
+2 ** 3     # 8    macht
+```
+
+</details>
+
+---
+
+## Tekst
+
+<details>
+<summary><strong>Strings</strong></summary>
+
+```python
+tekst = "Hallo Wereld"
+
+tekst.upper()                      # "HALLO WERELD"
+tekst.lower()                      # "hallo wereld"
+tekst.replace("Wereld", "Python")  # "Hallo Python"
+len(tekst)                         # 12
+```
+
+</details>
+
+<details>
+<summary><strong>f-strings</strong></summary>
+
+```python
+naam = "Lisa"
+leeftijd = 15
+
+print(f"Ik ben {naam}.")
+print(f"Volgend jaar ben ik {leeftijd + 1}.")
+print(f"Prijs: €{9.99:.2f}")
+```
+
+</details>
+
+---
+
+## Booleans en vergelijken
+
+<details>
+<summary><strong>Vergelijkingsoperatoren</strong></summary>
+
+```python
+5 == 5     # True   is gelijk aan
+5 != 3     # True   is niet gelijk aan
+3 < 10     # True   kleiner dan
+3 > 10     # False  groter dan
+5 <= 5     # True   kleiner dan of gelijk aan
+3 >= 10    # False  groter dan of gelijk aan
+```
+
+</details>
+
+<details>
+<summary><strong>Logische operatoren</strong></summary>
+
+```python
+True and True     # True   (beide waar)
+True and False    # False
+True or False     # True   (minstens één waar)
+False or False    # False
+not True          # False  (omgedraaid)
+```
+
+</details>
+
+---
+
+## If en if/else
+
+<details>
+<summary><strong>if</strong></summary>
+
+```python
+if leeftijd >= 18:
+    print("Volwassen")
+```
+
+</details>
+
+<details>
+<summary><strong>if/else</strong></summary>
+
+```python
+if temperatuur >= 20:
+    print("Warm")
+else:
+    print("Koud")
+```
+
+</details>
+
+---
+
+## For-loop
+
+<details>
+<summary><strong>range()</strong></summary>
+
+```python
+for i in range(5):          # 0, 1, 2, 3, 4
+    print(i)
+
+for i in range(1, 6):       # 1, 2, 3, 4, 5
+    print(i)
+
+for i in range(0, 10, 2):   # 0, 2, 4, 6, 8
+    print(i)
+```
+
+</details>
+
+<details>
+<summary><strong>Teller bijhouden</strong></summary>
+
+```python
+som = 0
+for i in range(1, 11):
+    som += i               # som = som + i
+print(som)                 # 55
+```
+
+</details>
+
+---
+
+## Functies
+
+<details>
+<summary><strong>Functie zonder parameters</strong></summary>
+
+```python
+def zeg_hallo():
+    print("Hallo!")
+
+zeg_hallo()
+```
+
+</details>
+
+<details>
+<summary><strong>Functie met parameters</strong></summary>
+
+```python
+def begroet(naam):
+    print(f"Hallo, {naam}!")
+
+begroet("Sara")
+```
+
+</details>
+
+<details>
+<summary><strong>Return</strong></summary>
+
+```python
+def optellen(a, b):
+    return a + b
+
+resultaat = optellen(3, 5)   # 8
+```
+
+</details>
+
+---
+
+## Lijsten
+
+<details>
+<summary><strong>Lijst maken en opvragen</strong></summary>
+
+```python
+namen = ["Ali", "Sara", "Daan"]
+
+print(namen[0])     # "Ali"
+print(namen[-1])    # "Daan"
+print(len(namen))   # 3
+```
+
+</details>
+
+<details>
+<summary><strong>Toevoegen en verwijderen</strong></summary>
+
+```python
+namen = ["Ali", "Sara"]
+
+namen.append("Daan")    # Toevoegen aan einde
+namen.remove("Ali")     # Verwijderen op naam
+namen.pop()             # Laatste verwijderen
+```
+
+</details>
+
+<details>
+<summary><strong>Door een lijst loopen</strong></summary>
+
+```python
+namen = ["Ali", "Sara", "Daan"]
+
+for naam in namen:
+    print(naam)
+```
+
+</details>
+
+<details>
+<summary><strong>Handige functies</strong></summary>
+
+```python
+getallen = [3, 1, 4, 1, 5]
+
+len(getallen)       # 5
+min(getallen)       # 1
+max(getallen)       # 5
+sum(getallen)       # 14
+sorted(getallen)    # [1, 1, 3, 4, 5]
+```
+
+</details>
+
+---
+
+## Dictionaries
+
+<details>
+<summary><strong>Dictionary maken en opvragen</strong></summary>
+
+```python
+leerling = {
+    "naam": "Sara",
+    "leeftijd": 15
+}
+
+print(leerling["naam"])      # "Sara"
+leerling["klas"] = "3B"      # Toevoegen
+leerling["leeftijd"] = 16    # Veranderen
+```
+
+</details>
+
+<details>
+<summary><strong>Door een dictionary loopen</strong></summary>
+
+```python
+for sleutel, waarde in leerling.items():
+    print(f"{sleutel}: {waarde}")
+```
+
+</details>

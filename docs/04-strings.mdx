@@ -1,0 +1,144 @@
+---
+sidebar_position: 4
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Strings
+
+Strings zijn stukken tekst. In Python kun je heel veel met strings doen.
+
+## Strings maken
+
+```python
+tekst1 = "Hallo met dubbele aanhalingstekens"
+tekst2 = 'Hallo met enkele aanhalingstekens'
+tekst3 = """Dit is een
+tekst over
+meerdere regels"""
+
+print(tekst1)
+print(tekst2)
+print(tekst3)
+```
+
+## Strings samenvoegen
+
+Je kunt strings combineren met `+`:
+
+```python
+voornaam = "Jan"
+achternaam = "de Vries"
+volledige_naam = voornaam + " " + achternaam
+
+print(volledige_naam)
+```
+
+## f-strings
+
+De makkelijkste manier om variabelen in tekst te zetten:
+
+```python
+naam = "Lisa"
+leeftijd = 15
+
+print(f"Hallo, ik ben {naam} en ik ben {leeftijd} jaar oud.")
+print(f"Volgend jaar ben ik {leeftijd + 1}.")
+```
+
+## String methoden
+
+Strings hebben handige ingebouwde functies:
+
+```python
+tekst = "Hallo Wereld"
+
+print(tekst.upper())        # HALLO WERELD
+print(tekst.lower())        # hallo wereld
+print(tekst.replace("Wereld", "Python"))  # Hallo Python
+print(len(tekst))           # 12 (lengte)
+print(tekst.count("l"))     # 3 (aantal keer 'l')
+print(tekst.startswith("Hallo"))  # True
+```
+
+---
+
+## Oefening 1
+
+Maak een variabele met je volledige naam en print:
+- Je naam in hoofdletters
+- Je naam in kleine letters
+- Het aantal letters in je naam
+
+<CodeExercise>{`naam = ...
+
+print(...)
+print(...)
+print(...)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik `.upper()` voor hoofdletters, `.lower()` voor kleine letters, en `len()` voor de lengte.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+naam = "Jan de Vries"
+
+print(naam.upper())
+print(naam.lower())
+print(len(naam))
+```
+
+</details>
+
+---
+
+## Oefening 2
+
+Gebruik een f-string om de volgende tabel te printen. De waarden moeten uit variabelen komen.
+
+```
+Product: Appel
+Prijs: €1.50
+Aantal: 3
+Totaal: €4.50
+```
+
+<CodeExercise>{`product = "Appel"
+prijs = 1.50
+aantal = 3
+
+# Gebruik f-strings
+print(...)
+print(...)
+print(...)
+print(...)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+In een f-string kun je berekeningen doen: `f"Totaal: €{prijs * aantal}"`. Je kunt ook `:.2f` gebruiken voor twee decimalen: `f"€{waarde:.2f}"`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+product = "Appel"
+prijs = 1.50
+aantal = 3
+
+print(f"Product: {product}")
+print(f"Prijs: €{prijs:.2f}")
+print(f"Aantal: {aantal}")
+print(f"Totaal: €{prijs * aantal:.2f}")
+```
+
+</details>
+

@@ -1,0 +1,280 @@
+---
+sidebar_position: 7
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# For-loop
+
+Met een `for`-loop kun je code herhalen zonder alles te kopiëren.
+
+## Waarom loops?
+
+Stel je wilt de getallen 0 tot en met 4 printen. Zonder loop zou je dit doen:
+
+```python
+print(0)
+print(1)
+print(2)
+print(3)
+print(4)
+```
+
+Dat zijn 5 regels die bijna hetzelfde zijn. Met een `for`-loop doe je hetzelfde in 2 regels:
+
+```python
+for i in range(5):
+    print(i)
+```
+
+## Hoe werkt het?
+
+`for i in range(5)` doet eigenlijk precies hetzelfde als steeds opnieuw een variabele een waarde geven:
+
+```python
+# Dit...
+for i in range(5):
+    print(i)
+
+# ...is hetzelfde als dit:
+i = 0
+print(i)
+i = 1
+print(i)
+i = 2
+print(i)
+i = 3
+print(i)
+i = 4
+print(i)
+```
+
+De variabele `i` krijgt steeds de volgende waarde uit `range(5)`. Bij elke waarde wordt de ingesprongen code uitgevoerd.
+
+:::tip
+De naam `i` is niet speciaal. Je mag elke naam gebruiken:
+```python
+for getal in range(5):
+    print(getal)
+```
+:::
+
+## range()
+
+`range()` maakt een reeks getallen:
+
+```python
+# range(5) → 0, 1, 2, 3, 4
+for i in range(5):
+    print(i)
+
+# range(1, 6) → 1, 2, 3, 4, 5
+for i in range(1, 6):
+    print(i)
+
+# range(0, 10, 2) → 0, 2, 4, 6, 8  (stappen van 2)
+for i in range(0, 10, 2):
+    print(i)
+```
+
+## Iets doen met de variabele
+
+Het leuke is dat je de variabele kunt gebruiken in je code:
+
+```python
+for i in range(1, 6):
+    print(f"{i} keer 3 = {i * 3}")
+```
+
+---
+
+## Oefening 1
+
+Print de getallen 1 tot en met 10.
+
+<CodeExercise>{`for i in range(...):
+    print(i)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+`range(1, 11)` geeft de getallen 1 tot en met 10. Let op: het eindgetal zit er niet bij!
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+for i in range(1, 11):
+    print(i)
+```
+
+</details>
+
+---
+
+## Oefening 2
+
+Print de tafel van 7 (van 1 t/m 10):
+
+```
+7 x 1 = 7
+7 x 2 = 14
+...
+7 x 10 = 70
+```
+
+<CodeExercise>{`for i in range(...):
+    print(...)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik `range(1, 11)` en een f-string: `f"7 x {i} = {7 * i}"`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+for i in range(1, 11):
+    print(f"7 x {i} = {7 * i}")
+```
+
+</details>
+
+---
+
+## Oefening 3
+
+Maak een driehoek van sterretjes. Bij `hoogte = 5`:
+
+```
+*
+**
+***
+****
+*****
+```
+
+<CodeExercise>{`hoogte = 5
+
+for i in range(...):
+    print(...)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Je kunt een string herhalen met `*`: `"*" * 3` geeft `"***"`. Gebruik `range(1, hoogte + 1)`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+hoogte = 5
+
+for i in range(1, hoogte + 1):
+    print("*" * i)
+```
+
+</details>
+
+---
+
+## Oefening 4
+
+Bereken de som van alle getallen van 1 tot en met 100.
+
+<CodeExercise>{`som = 0
+
+for i in range(...):
+    som += i
+
+print(f"De som is: {som}")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+`som += i` is hetzelfde als `som = som + i`. Begin met `som = 0` en tel elk getal erbij op. Het antwoord is 5050.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+som = 0
+
+for i in range(1, 101):
+    som += i
+
+print(f"De som is: {som}")
+```
+
+</details>
+
+---
+
+## Oefening 5
+
+Print alle even getallen van 2 tot en met 20.
+
+<CodeExercise>{`for i in range(...):
+    print(i)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik `range(start, stop, stap)` met een stap van 2: `range(2, 21, 2)`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+for i in range(2, 21, 2):
+    print(i)
+```
+
+</details>
+
+---
+
+## Oefening 6
+
+Tel hoeveel getallen van 1 tot en met 20 deelbaar zijn door 3.
+
+<CodeExercise>{`teller = 0
+
+for i in range(1, 21):
+    if ...:
+        teller += 1
+
+print(f"Er zijn {teller} getallen deelbaar door 3")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Een getal is deelbaar door 3 als `i % 3 == 0`. Tel die gevallen op met `teller += 1`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+teller = 0
+
+for i in range(1, 21):
+    if i % 3 == 0:
+        teller += 1
+
+print(f"Er zijn {teller} getallen deelbaar door 3")
+```
+
+</details>

@@ -1,0 +1,282 @@
+---
+sidebar_position: 5
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Booleans
+
+Een boolean is een waarde die alleen `True` (waar) of `False` (niet waar) kan zijn.
+
+## True en False
+
+```python
+is_warm = True
+regent_het = False
+
+print(is_warm)       # True
+print(regent_het)    # False
+print(type(is_warm)) # <class 'bool'>
+```
+
+## Vergelijken
+
+Met vergelijkingsoperatoren krijg je altijd een boolean terug:
+
+| Operator | Betekenis | Voorbeeld | Resultaat |
+|----------|-----------|-----------|-----------|
+| `==` | is gelijk aan | `5 == 5` | `True` |
+| `!=` | is niet gelijk aan | `5 != 3` | `True` |
+| `<` | kleiner dan | `3 < 10` | `True` |
+| `>` | groter dan | `3 > 10` | `False` |
+| `<=` | kleiner dan of gelijk aan | `5 <= 5` | `True` |
+| `>=` | groter dan of gelijk aan | `3 >= 10` | `False` |
+
+```python
+print(5 == 5)    # True
+print(5 == 3)    # False
+print(3 < 10)    # True
+print(10 > 20)   # False
+print(5 != 5)    # False
+print(7 >= 7)    # True
+```
+
+:::caution Let op
+`=` is **toewijzing** (waarde opslaan), `==` is **vergelijking**. Dit is een veelgemaakte fout!
+:::
+
+## Vergelijken met variabelen
+
+```python
+leeftijd = 16
+print(leeftijd >= 18)    # False
+print(leeftijd < 18)     # True
+
+naam = "Python"
+print(naam == "Python")  # True
+print(naam == "Java")    # False
+```
+
+## and, or, not
+
+Met `and`, `or` en `not` kun je booleans combineren:
+
+```python
+# and: beide moeten True zijn
+print(True and True)     # True
+print(True and False)    # False
+
+# or: minstens één moet True zijn
+print(True or False)     # True
+print(False or False)    # False
+
+# not: draait het om
+print(not True)          # False
+print(not False)         # True
+```
+
+Een praktisch voorbeeld:
+
+```python
+leeftijd = 16
+heeft_kaartje = True
+
+print(leeftijd >= 12 and heeft_kaartje)  # True (beide waar)
+print(leeftijd >= 18 or heeft_kaartje)   # True (minstens één waar)
+print(not heeft_kaartje)                  # False
+```
+
+---
+
+## Oefening 1
+
+Wat printen deze vergelijkingen? Probeer eerst zelf te bedenken, voer dan de code uit om te checken.
+
+<CodeExercise>{`print(10 > 5)
+print(3 == 4)
+print(7 != 7)
+print(15 >= 15)
+print(1 < 1)
+print(100 <= 99)`}</CodeExercise>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```
+True
+False
+False
+True
+False
+False
+```
+
+</details>
+
+---
+
+## Oefening 2
+
+Maak variabelen aan en schrijf vergelijkingen die `True` of `False` opleveren. Controleer of:
+- De temperatuur boven de 30 graden is
+- Het cijfer een voldoende is (5.5 of hoger)
+- De naam gelijk is aan "admin"
+
+<CodeExercise>{`temperatuur = 25
+cijfer = 7
+naam = "gebruiker"
+
+is_heet = ...
+is_voldoende = ...
+is_admin = ...
+
+print("Is het heet?", is_heet)
+print("Is het een voldoende?", is_voldoende)
+print("Is het de admin?", is_admin)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik `>` voor "boven de 30", `>=` voor "5.5 of hoger", en `==` voor "gelijk aan".
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+temperatuur = 25
+cijfer = 7
+naam = "gebruiker"
+
+is_heet = temperatuur > 30
+is_voldoende = cijfer >= 5.5
+is_admin = naam == "admin"
+
+print("Is het heet?", is_heet)
+print("Is het een voldoende?", is_voldoende)
+print("Is het de admin?", is_admin)
+```
+
+</details>
+
+---
+
+## Oefening 3
+
+Gebruik `and`, `or` en `not` om de juiste booleans te maken:
+- Mag iemand autorijden? (18 of ouder **en** heeft rijbewijs)
+- Krijgt iemand korting? (jonger dan 12 **of** ouder dan 65)
+- Is het weekend? (niet een werkdag)
+
+<CodeExercise>{`leeftijd = 20
+heeft_rijbewijs = True
+is_werkdag = True
+
+mag_rijden = ...
+heeft_korting = ...
+is_weekend = ...
+
+print("Mag rijden:", mag_rijden)
+print("Heeft korting:", heeft_korting)
+print("Is het weekend:", is_weekend)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+- `and` = beide moeten waar zijn
+- `or` = minstens één moet waar zijn
+- `not` = draait True/False om
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+leeftijd = 20
+heeft_rijbewijs = True
+is_werkdag = True
+
+mag_rijden = leeftijd >= 18 and heeft_rijbewijs
+heeft_korting = leeftijd < 12 or leeftijd > 65
+is_weekend = not is_werkdag
+
+print("Mag rijden:", mag_rijden)
+print("Heeft korting:", heeft_korting)
+print("Is het weekend:", is_weekend)
+```
+
+</details>
+
+---
+
+## Oefening 4
+
+Bedenk wat de uitkomst is van elke regel. Voer het dan uit om jezelf te checken.
+
+<CodeExercise>{`x = 10
+y = 5
+
+print(x > 5 and y > 5)
+print(x > 5 or y > 5)
+print(not x == 10)
+print(x > 5 and y < 10)
+print(not (x == y))
+print(x >= 10 and y <= 5 and x != y)`}</CodeExercise>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```
+False   (10 > 5 is True, maar 5 > 5 is False → True and False = False)
+True    (10 > 5 is True → True or False = True)
+False   (10 == 10 is True → not True = False)
+True    (10 > 5 is True en 5 < 10 is True → True and True = True)
+True    (10 == 5 is False → not False = True)
+True    (alle drie True → True and True and True = True)
+```
+
+</details>
+
+---
+
+## Oefening 5
+
+Een zwembad laat je alleen binnen als je:
+- Minstens 1.20m lang bent
+- Een zwemdiploma hebt **of** begeleiding hebt
+
+Schrijf de code die bepaalt of iemand naar binnen mag.
+
+<CodeExercise>{`lengte = 1.35
+heeft_diploma = False
+heeft_begeleiding = True
+
+mag_naar_binnen = ...
+
+print(f"Lengte: {lengte}m")
+print(f"Mag naar binnen: {mag_naar_binnen}")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Je hebt `and` en `or` allebei nodig. Gebruik haakjes om te groeperen: `lengte >= 1.20 and (diploma or begeleiding)`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+lengte = 1.35
+heeft_diploma = False
+heeft_begeleiding = True
+
+mag_naar_binnen = lengte >= 1.20 and (heeft_diploma or heeft_begeleiding)
+
+print(f"Lengte: {lengte}m")
+print(f"Mag naar binnen: {mag_naar_binnen}")
+```
+
+</details>

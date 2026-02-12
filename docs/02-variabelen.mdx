@@ -1,0 +1,197 @@
+---
+sidebar_position: 2
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Variabelen en Datatypes
+
+Variabelen zijn als doosjes waarin je waarden kunt opslaan. Elk doosje heeft een naam en een inhoud.
+
+## Variabelen aanmaken
+
+Je maakt een variabele aan met het `=` teken:
+
+```python
+naam = "Python"
+leeftijd = 15
+lengte = 1.75
+is_student = True
+
+print(naam)
+print(leeftijd)
+```
+
+## Datatypes
+
+Python heeft verschillende datatypes:
+
+| Type | Voorbeeld | Beschrijving |
+|------|-----------|-------------|
+| `str` | `"Hallo"` | Tekst (string) |
+| `int` | `42` | Geheel getal (integer) |
+| `float` | `3.14` | Decimaal getal |
+| `bool` | `True` / `False` | Waar of niet waar |
+
+Je kunt het type opvragen met `type()`:
+
+```python
+naam = "Python"
+leeftijd = 15
+lengte = 1.75
+is_student = True
+
+print(type(naam))       # <class 'str'>
+print(type(leeftijd))   # <class 'int'>
+print(type(lengte))     # <class 'float'>
+print(type(is_student)) # <class 'bool'>
+```
+
+## Variabelen veranderen
+
+Je kunt de waarde van een variabele op elk moment aanpassen:
+
+```python
+score = 0
+print("Score:", score)
+
+score = 10
+print("Score:", score)
+
+score = score + 5
+print("Score:", score)
+```
+
+## Input van de gebruiker
+
+:::info
+`input()` werkt niet in de Playground. Deze functie werkt alleen wanneer je Python lokaal op je computer draait.
+:::
+
+Met `input()` kun je de gebruiker om invoer vragen:
+
+```python
+naam = input("Wat is je naam? ")
+print("Hallo,", naam)
+```
+
+---
+
+## Oefening 1
+
+Maak variabelen aan voor je naam, leeftijd en favoriete kleur. Print ze daarna in een zin.
+
+<CodeExercise>{`# Maak je variabelen aan
+naam = ...
+leeftijd = ...
+kleur = ...
+
+# Print een zin
+print(...)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Strings staan tussen aanhalingstekens, getallen niet. Gebruik komma's in `print()` om variabelen en tekst te combineren.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+naam = "Sara"
+leeftijd = 15
+kleur = "blauw"
+
+print("Ik ben", naam, "en ik ben", leeftijd, "jaar. Mijn favoriete kleur is", kleur)
+```
+
+</details>
+
+---
+
+## Oefening 2
+
+Bereken de oppervlakte van een rechthoek. Sla de breedte en hoogte op in variabelen.
+
+<CodeExercise>{`breedte = ...
+hoogte = ...
+oppervlakte = ...
+
+print("De oppervlakte is:", oppervlakte)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+De oppervlakte van een rechthoek is `breedte * hoogte`. Sla het resultaat op in een nieuwe variabele.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+breedte = 8
+hoogte = 5
+oppervlakte = breedte * hoogte
+
+print("De oppervlakte is:", oppervlakte)
+```
+
+</details>
+
+---
+
+## Oefening 3
+
+Wissel de waarden van twee variabelen om. Als `a = 5` en `b = 10`, moet `a` daarna `10` zijn en `b` moet `5` zijn.
+
+<CodeExercise>{`a = 5
+b = 10
+
+print("Voor:", a, b)
+
+# Wissel hier de waarden om
+...
+
+print("Na:", a, b)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Je hebt een derde variabele nodig als tussenopslag, óf je kunt de Python-truc `a, b = b, a` gebruiken.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+a = 5
+b = 10
+
+print("Voor:", a, b)
+
+# Methode 1: met een hulpvariabele
+temp = a
+a = b
+b = temp
+
+print("Na:", a, b)
+```
+
+Of korter met Python:
+
+```python
+a = 5
+b = 10
+
+print("Voor:", a, b)
+
+a, b = b, a
+
+print("Na:", a, b)
+```
+
+</details>

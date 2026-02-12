@@ -1,0 +1,290 @@
+# Er gaat iets mis!
+
+Geen paniek! Hieronder vind je de meest voorkomende fouten en hoe je ze oplost.
+
+---
+
+## Foutmeldingen
+
+<details>
+<summary><strong>SyntaxError: invalid syntax</strong></summary>
+
+Je hebt een typfout in je code. Veelvoorkomende oorzaken:
+
+```python
+# Haakje vergeten
+print("Hallo"      # ❌ SyntaxError
+print("Hallo")     # ✅
+
+# Dubbele punt vergeten bij if/for/def
+if leeftijd >= 18  # ❌ SyntaxError
+if leeftijd >= 18: # ✅
+
+# Aanhalingsteken vergeten
+print("Hallo)      # ❌ SyntaxError
+print("Hallo")     # ✅
+```
+
+</details>
+
+<details>
+<summary><strong>IndentationError: expected an indented block</strong></summary>
+
+De code na `if`, `for`, `def` of `else` moet inspringen met 4 spaties.
+
+```python
+# ❌ Geen inspringing
+if leeftijd >= 18:
+print("Volwassen")
+
+# ✅ Met inspringing
+if leeftijd >= 18:
+    print("Volwassen")
+```
+
+</details>
+
+<details>
+<summary><strong>NameError: name 'x' is not defined</strong></summary>
+
+Je gebruikt een variabele die niet bestaat. Veelvoorkomende oorzaken:
+
+```python
+# Typfout in de naam
+naam = "Sara"
+print(Name)         # ❌ NameError (hoofdletter!)
+print(naam)         # ✅
+
+# Variabele nog niet aangemaakt
+print(leeftijd)     # ❌ NameError
+leeftijd = 15
+print(leeftijd)     # ✅
+
+# Vergeten aanhalingstekens bij tekst
+print(Hallo)        # ❌ NameError
+print("Hallo")      # ✅
+```
+
+</details>
+
+<details>
+<summary><strong>TypeError: can only concatenate str to str</strong></summary>
+
+Je probeert tekst en een getal samen te plakken met `+`.
+
+```python
+leeftijd = 15
+
+# ❌ TypeError
+print("Ik ben " + leeftijd + " jaar")
+
+# ✅ Gebruik een komma
+print("Ik ben", leeftijd, "jaar")
+
+# ✅ Of een f-string
+print(f"Ik ben {leeftijd} jaar")
+```
+
+</details>
+
+<details>
+<summary><strong>ZeroDivisionError: division by zero</strong></summary>
+
+Je deelt door 0, wat niet kan.
+
+```python
+# ❌ ZeroDivisionError
+print(10 / 0)
+
+# ✅ Controleer eerst
+if noemer != 0:
+    print(10 / noemer)
+```
+
+</details>
+
+<details>
+<summary><strong>IndexError: list index out of range</strong></summary>
+
+Je probeert een element op te vragen dat niet bestaat in de lijst.
+
+```python
+namen = ["Ali", "Sara", "Daan"]
+
+# ❌ IndexError (er is geen index 3)
+print(namen[3])
+
+# ✅ Index 0, 1 of 2
+print(namen[2])     # "Daan"
+print(namen[-1])    # "Daan" (laatste)
+```
+
+</details>
+
+<details>
+<summary><strong>KeyError: 'sleutel'</strong></summary>
+
+Je zoekt een sleutel op die niet in de dictionary staat.
+
+```python
+leerling = {"naam": "Sara"}
+
+# ❌ KeyError
+print(leerling["leeftijd"])
+
+# ✅ Controleer eerst
+if "leeftijd" in leerling:
+    print(leerling["leeftijd"])
+```
+
+</details>
+
+---
+
+## Veelgemaakte fouten
+
+<details>
+<summary><strong>= vs ==</strong></summary>
+
+`=` slaat een waarde op, `==` vergelijkt twee waarden.
+
+```python
+# ❌ Dit slaat 18 op in leeftijd
+if leeftijd = 18:
+
+# ✅ Dit vergelijkt leeftijd met 18
+if leeftijd == 18:
+```
+
+</details>
+
+<details>
+<summary><strong>Inspringen vergeten</strong></summary>
+
+Code in een `if`, `for`, `def` of `else` blok **moet** inspringen.
+
+```python
+# ❌ Fout
+for i in range(5):
+print(i)
+
+# ✅ Goed
+for i in range(5):
+    print(i)
+```
+
+</details>
+
+<details>
+<summary><strong>range() eindigt één eerder</strong></summary>
+
+`range(5)` geeft 0, 1, 2, 3, 4 — **niet** 5!
+
+```python
+# ❌ Print 0 t/m 4
+for i in range(5):
+    print(i)
+
+# ✅ Print 1 t/m 5
+for i in range(1, 6):
+    print(i)
+```
+
+</details>
+
+<details>
+<summary><strong>Aanhalingstekens vergeten bij strings</strong></summary>
+
+Tekst moet altijd tussen aanhalingstekens staan.
+
+```python
+# ❌ Python denkt dat Hallo een variabele is
+print(Hallo)
+
+# ✅
+print("Hallo")
+```
+
+</details>
+
+<details>
+<summary><strong>Functie aanroepen zonder haakjes</strong></summary>
+
+```python
+def zeg_hallo():
+    print("Hallo!")
+
+# ❌ Dit doet niks (print alleen de functie zelf)
+zeg_hallo
+
+# ✅ Met haakjes
+zeg_hallo()
+```
+
+</details>
+
+<details>
+<summary><strong>print() vs return</strong></summary>
+
+`print()` toont iets op het scherm. `return` geeft een waarde terug die je kunt opslaan.
+
+```python
+# ❌ Je kunt het resultaat niet opslaan
+def optellen(a, b):
+    print(a + b)
+
+x = optellen(3, 5)   # x is None!
+
+# ✅ Met return kun je het resultaat gebruiken
+def optellen(a, b):
+    return a + b
+
+x = optellen(3, 5)   # x is 8
+```
+
+</details>
+
+---
+
+## Tips
+
+<details>
+<summary><strong>Lees de foutmelding!</strong></summary>
+
+Python vertelt je precies wat er mis is en op welke regel. Lees altijd de **laatste regel** van de foutmelding:
+
+```
+Traceback (most recent call last):
+  File "main.py", line 3
+    print("Hallo"
+         ^
+SyntaxError: '(' was never closed
+```
+
+Dit vertelt je: op **regel 3** is een haakje niet gesloten.
+
+</details>
+
+<details>
+<summary><strong>Test je code stap voor stap</strong></summary>
+
+Voeg `print()` toe om te zien wat je variabelen bevatten:
+
+```python
+x = 10
+y = 3
+resultaat = x / y
+
+print(f"x = {x}")
+print(f"y = {y}")
+print(f"resultaat = {resultaat}")
+```
+
+</details>
+
+<details>
+<summary><strong>Gebruik de Playground</strong></summary>
+
+Probeer kleine stukjes code uit in de [Playground](/playground) voordat je ze in je programma zet. Zo kun je snel testen of iets werkt.
+
+</details>

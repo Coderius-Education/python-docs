@@ -1,0 +1,273 @@
+---
+sidebar_position: 6
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# If en If/Else
+
+Met `if` laat je je programma beslissingen nemen.
+
+## if
+
+Als de voorwaarde `True` is, wordt de code eronder uitgevoerd:
+
+```python
+leeftijd = 18
+
+if leeftijd >= 18:
+    print("Je bent volwassen!")
+```
+
+Als de voorwaarde `False` is, wordt de code overgeslagen:
+
+```python
+leeftijd = 12
+
+if leeftijd >= 18:
+    print("Je bent volwassen!")
+
+print("Dit wordt altijd geprint.")
+```
+
+:::caution Let op
+De code na `if` moet **inspringen** met 4 spaties. Dit is verplicht in Python!
+:::
+
+## if/else
+
+Met `else` voeg je toe wat er moet gebeuren als de voorwaarde `False` is:
+
+```python
+temperatuur = 15
+
+if temperatuur >= 20:
+    print("Lekker weer! Ga naar buiten.")
+else:
+    print("Het is koud. Pak een jas mee.")
+```
+
+## Meerdere regels
+
+Je kunt meerdere regels code in een `if` of `else` blok zetten:
+
+```python
+score = 80
+
+if score >= 50:
+    print("Je bent geslaagd!")
+    print("Gefeliciteerd!")
+else:
+    print("Helaas, niet geslaagd.")
+    print("Probeer het opnieuw.")
+```
+
+---
+
+## Oefening 1
+
+Schrijf een programma dat controleert of een getal positief of negatief is.
+
+<CodeExercise>{`getal = -3
+
+if ...:
+    print("Het getal is positief")
+else:
+    print("Het getal is negatief")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Een getal is positief als het groter is dan 0: `getal > 0`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+getal = -3
+
+if getal > 0:
+    print("Het getal is positief")
+else:
+    print("Het getal is negatief")
+```
+
+</details>
+
+---
+
+## Oefening 2
+
+Controleer of iemand oud genoeg is om auto te rijden (18 jaar of ouder).
+
+<CodeExercise>{`leeftijd = 16
+
+if ...:
+    print(...)
+else:
+    print(...)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik `leeftijd >= 18` als voorwaarde.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+leeftijd = 16
+
+if leeftijd >= 18:
+    print("Je mag autorijden!")
+else:
+    print("Je bent nog te jong om te rijden.")
+```
+
+</details>
+
+---
+
+## Oefening 3
+
+Schrijf een programma dat controleert of een getal even of oneven is.
+
+<CodeExercise>{`getal = 7
+
+if ...:
+    print(f"{getal} is even")
+else:
+    print(f"{getal} is oneven")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Een getal is even als de rest na deling door 2 gelijk is aan 0: `getal % 2 == 0`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+getal = 7
+
+if getal % 2 == 0:
+    print(f"{getal} is even")
+else:
+    print(f"{getal} is oneven")
+```
+
+</details>
+
+---
+
+## Oefening 4
+
+Een bioscoop laat alleen mensen van 12 jaar of ouder binnen. Print of iemand naar binnen mag.
+
+<CodeExercise>{`leeftijd = 10
+film = "Spider-Man"
+
+if ...:
+    print(f"Welkom! Veel plezier bij {film}.")
+else:
+    print(f"Sorry, je bent te jong voor {film}.")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+De voorwaarde is `leeftijd >= 12`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+leeftijd = 10
+film = "Spider-Man"
+
+if leeftijd >= 12:
+    print(f"Welkom! Veel plezier bij {film}.")
+else:
+    print(f"Sorry, je bent te jong voor {film}.")
+```
+
+</details>
+
+---
+
+## Oefening 5
+
+Een wachtwoord moet minstens 8 tekens lang zijn. Controleer of het wachtwoord lang genoeg is.
+
+<CodeExercise>{`wachtwoord = "geheim"
+
+if ...:
+    print("Wachtwoord is sterk genoeg.")
+else:
+    print(f"Te kort! Je wachtwoord heeft {len(wachtwoord)} tekens, maar je hebt er 8 nodig.")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik `len(wachtwoord)` om de lengte te krijgen en vergelijk met `>= 8`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+wachtwoord = "geheim"
+
+if len(wachtwoord) >= 8:
+    print("Wachtwoord is sterk genoeg.")
+else:
+    print(f"Te kort! Je wachtwoord heeft {len(wachtwoord)} tekens, maar je hebt er 8 nodig.")
+```
+
+</details>
+
+---
+
+## Oefening 6
+
+Een winkel geeft 20% korting als je voor meer dan €50 koopt. Bereken de uiteindelijke prijs.
+
+<CodeExercise>{`bedrag = 65
+
+if ...:
+    korting = bedrag * 0.20
+    bedrag = bedrag - korting
+    print(f"Je krijgt €{korting} korting!")
+
+print(f"Te betalen: €{bedrag}")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Hier heb je alleen een `if` nodig (geen `else`). De korting wordt alleen toegepast als `bedrag > 50`. De laatste `print` staat buiten het if-blok en wordt altijd uitgevoerd.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+bedrag = 65
+
+if bedrag > 50:
+    korting = bedrag * 0.20
+    bedrag = bedrag - korting
+    print(f"Je krijgt €{korting} korting!")
+
+print(f"Te betalen: €{bedrag}")
+```
+
+</details>

@@ -1,0 +1,192 @@
+---
+sidebar_position: 8
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Functies
+
+Een functie is een blok code dat je een naam geeft. Je kunt het daarna zo vaak uitvoeren als je wilt, zonder alles opnieuw te typen.
+
+## Waarom functies?
+
+Stel je wilt op meerdere plekken een begroeting printen:
+
+```python
+print("==================")
+print("Welkom bij het spel!")
+print("==================")
+
+# ... later in je code ...
+
+print("==================")
+print("Welkom bij het spel!")
+print("==================")
+```
+
+Dat is veel herhaling. Met een functie doe je dit:
+
+```python
+def welkom():
+    print("==================")
+    print("Welkom bij het spel!")
+    print("==================")
+
+# Nu roep je de functie aan waar je wilt
+welkom()
+
+# ... later in je code ...
+welkom()
+```
+
+## Een functie maken
+
+Je maakt een functie met `def`, een naam, en `()`:
+
+```python
+def zeg_hallo():
+    print("Hallo!")
+    print("Fijn dat je er bent.")
+
+# Aanroepen
+zeg_hallo()
+```
+
+:::caution Let op
+De code in de functie moet **inspringen** (4 spaties), net als bij `if` en `for`.
+:::
+
+## Meerdere functies
+
+Je kunt zoveel functies maken als je wilt:
+
+```python
+def lijn():
+    print("----------")
+
+def titel():
+    lijn()
+    print("Mijn Programma")
+    lijn()
+
+titel()
+```
+
+---
+
+## Oefening 1
+
+Maak een functie `sterren` die een rij van 20 sterretjes print. Roep de functie 3 keer aan.
+
+<CodeExercise>{`def sterren():
+    ...
+
+sterren()
+print("Hallo!")
+sterren()
+print("Welkom!")
+sterren()`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+In de functie gebruik je `print("*" * 20)` om 20 sterretjes te printen.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+def sterren():
+    print("*" * 20)
+
+sterren()
+print("Hallo!")
+sterren()
+print("Welkom!")
+sterren()
+```
+
+</details>
+
+---
+
+## Oefening 2
+
+Maak een functie `vierkant` die een vierkant van 5x5 sterretjes print.
+
+<CodeExercise>{`def vierkant():
+    ...
+
+vierkant()`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik een `for`-loop in je functie: `for i in range(5):` en print elke keer `"*" * 5`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+def vierkant():
+    for i in range(5):
+        print("*" * 5)
+
+vierkant()
+```
+
+</details>
+
+---
+
+## Oefening 3
+
+Maak twee functies: `kop` en `staart`. De functie `kop` print een lijn en een titel, de functie `staart` print alleen een lijn. Gebruik ze om dit te maken:
+
+```
+====================
+  Mijn eerste spel
+====================
+Druk op start...
+====================
+```
+
+<CodeExercise>{`def kop():
+    ...
+
+def staart():
+    ...
+
+kop()
+print("Druk op start...")
+staart()`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+In `kop()` print je de lijn (`"=" * 20`), dan de titel, dan weer de lijn. In `staart()` print je alleen de lijn.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+def kop():
+    print("=" * 20)
+    print("  Mijn eerste spel")
+    print("=" * 20)
+
+def staart():
+    print("=" * 20)
+
+kop()
+print("Druk op start...")
+staart()
+```
+
+</details>

@@ -1,0 +1,161 @@
+---
+sidebar_position: 10
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Lijsten
+
+Een lijst (list) is een verzameling van waarden in een bepaalde volgorde.
+
+## Lijsten maken
+
+```python
+getallen = [1, 2, 3, 4, 5]
+namen = ["Ali", "Sara", "Daan"]
+mix = [1, "twee", 3.0, True]
+
+print(getallen)
+print(namen)
+print(mix)
+```
+
+## Elementen opvragen
+
+Net als bij strings begin je te tellen bij 0:
+
+```python
+kleuren = ["rood", "groen", "blauw", "geel"]
+
+print(kleuren[0])    # rood
+print(kleuren[2])    # blauw
+print(kleuren[-1])   # geel (laatste)
+print(kleuren[1:3])  # ['groen', 'blauw']
+```
+
+## Elementen toevoegen en verwijderen
+
+```python
+dieren = ["kat", "hond"]
+
+# Toevoegen
+dieren.append("vis")          # Aan het einde
+dieren.insert(1, "vogel")     # Op positie 1
+
+print(dieren)  # ['kat', 'vogel', 'hond', 'vis']
+
+# Verwijderen
+dieren.remove("hond")         # Op naam
+verwijderd = dieren.pop()     # Laatste eruit halen
+
+print(dieren)       # ['kat', 'vogel']
+print(verwijderd)   # vis
+```
+
+## Door een lijst loopen
+
+```python
+vruchten = ["appel", "banaan", "kers"]
+
+for vrucht in vruchten:
+    print(f"Ik hou van {vrucht}!")
+```
+
+Met index:
+
+```python
+vruchten = ["appel", "banaan", "kers"]
+
+for i, vrucht in enumerate(vruchten):
+    print(f"{i}: {vrucht}")
+```
+
+## Handige lijst-functies
+
+```python
+getallen = [3, 1, 4, 1, 5, 9, 2, 6]
+
+print(len(getallen))      # 8 (lengte)
+print(min(getallen))      # 1 (kleinste)
+print(max(getallen))      # 9 (grootste)
+print(sum(getallen))      # 31 (som)
+print(sorted(getallen))   # [1, 1, 2, 3, 4, 5, 6, 9]
+```
+
+---
+
+## Oefening 1
+
+Gegeven een lijst met cijfers, bereken het gemiddelde en tel hoeveel cijfers een voldoende zijn (5.5 of hoger).
+
+<CodeExercise>{`cijfers = [7, 4, 8, 5, 9, 3, 6, 8, 5, 7]
+
+gemiddelde = ...
+aantal_voldoende = ...
+
+print(f"Gemiddelde: {gemiddelde}")
+print(f"Aantal voldoendes: {aantal_voldoende}")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Het gemiddelde is `sum(cijfers) / len(cijfers)`. Voor het aantal voldoendes loop je door de lijst en tel je elk cijfer dat `>= 5.5` is.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+cijfers = [7, 4, 8, 5, 9, 3, 6, 8, 5, 7]
+
+gemiddelde = sum(cijfers) / len(cijfers)
+aantal_voldoende = 0
+
+for cijfer in cijfers:
+    if cijfer >= 5.5:
+        aantal_voldoende += 1
+
+print(f"Gemiddelde: {gemiddelde}")
+print(f"Aantal voldoendes: {aantal_voldoende}")
+```
+
+</details>
+
+---
+
+## Oefening 2
+
+Schrijf een programma dat een lijst met getallen ontvangt en een nieuwe lijst teruggeeft met alleen de unieke waarden (zonder dubbele).
+
+<CodeExercise>{`getallen = [1, 3, 5, 3, 7, 1, 9, 5, 3]
+
+uniek = []
+for getal in getallen:
+    ...
+
+print(uniek)  # [1, 3, 5, 7, 9]`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Maak een lege lijst `uniek = []`. Loop door de originele lijst en voeg een getal alleen toe als het nog niet in `uniek` zit (`if getal not in uniek`).
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+getallen = [1, 3, 5, 3, 7, 1, 9, 5, 3]
+
+uniek = []
+for getal in getallen:
+    if getal not in uniek:
+        uniek.append(getal)
+
+print(uniek)  # [1, 3, 5, 7, 9]
+```
+
+</details>
+

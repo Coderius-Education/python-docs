@@ -1,0 +1,264 @@
+---
+sidebar_position: 9
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Parameters en Return
+
+In de vorige les maakten we functies die altijd hetzelfde doen. Nu leren we functies maken die **input** ontvangen en een **resultaat** teruggeven.
+
+## Parameters
+
+Een parameter is een variabele die je aan een functie meegeeft:
+
+```python
+def begroet(naam):
+    print(f"Hallo, {naam}!")
+
+begroet("Lisa")    # Hallo, Lisa!
+begroet("Ahmed")   # Hallo, Ahmed!
+```
+
+Het werkt als een variabele die automatisch een waarde krijgt wanneer je de functie aanroept:
+
+```python
+# Als je begroet("Lisa") aanroept, gebeurt er dit:
+# naam = "Lisa"
+# print(f"Hallo, {naam}!")
+```
+
+## Meerdere parameters
+
+Een functie kan meerdere parameters hebben, gescheiden door komma's:
+
+```python
+def stel_voor(naam, leeftijd):
+    print(f"Ik ben {naam} en ik ben {leeftijd} jaar.")
+
+stel_voor("Sara", 15)
+stel_voor("Daan", 16)
+```
+
+## Return
+
+Met `return` geeft een functie een waarde terug. Die waarde kun je opslaan in een variabele:
+
+```python
+def verdubbel(getal):
+    return getal * 2
+
+resultaat = verdubbel(5)
+print(resultaat)  # 10
+```
+
+Zonder `return` geeft een functie niks terug (ze print alleen of doet iets). Met `return` kun je het resultaat **gebruiken**:
+
+```python
+def optellen(a, b):
+    return a + b
+
+# Het resultaat opslaan
+som = optellen(3, 5)
+print(som)  # 8
+
+# Of direct gebruiken
+print(optellen(10, 20))  # 30
+```
+
+## Print vs Return
+
+Dit is een belangrijk verschil:
+
+```python
+# Deze functie PRINT het resultaat
+def optellen_print(a, b):
+    print(a + b)
+
+# Deze functie GEEFT het resultaat TERUG
+def optellen_return(a, b):
+    return a + b
+
+# Met print kun je het resultaat niet opslaan
+optellen_print(3, 5)      # print 8
+x = optellen_print(3, 5)  # x is None!
+
+# Met return kun je het resultaat wél opslaan
+y = optellen_return(3, 5) # y is 8
+print(y * 2)              # 16
+```
+
+---
+
+## Oefening 1
+
+Schrijf een functie `begroet` die een naam ontvangt en een begroeting print.
+
+<CodeExercise>{`def begroet(naam):
+    ...
+
+begroet("Jan")
+begroet("Sophie")
+begroet("Python")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik een f-string: `print(f"Hallo, {naam}!")`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+def begroet(naam):
+    print(f"Hallo, {naam}!")
+
+begroet("Jan")
+begroet("Sophie")
+begroet("Python")
+```
+
+</details>
+
+---
+
+## Oefening 2
+
+Schrijf een functie `oppervlakte` die de breedte en hoogte ontvangt en de oppervlakte **teruggeeft** met `return`.
+
+<CodeExercise>{`def oppervlakte(breedte, hoogte):
+    ...
+
+# Test je functie
+print(oppervlakte(5, 3))    # 15
+print(oppervlakte(10, 10))  # 100
+print(oppervlakte(7, 2))    # 14`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+De oppervlakte is `breedte * hoogte`. Gebruik `return` om het resultaat terug te geven.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+def oppervlakte(breedte, hoogte):
+    return breedte * hoogte
+
+print(oppervlakte(5, 3))    # 15
+print(oppervlakte(10, 10))  # 100
+print(oppervlakte(7, 2))    # 14
+```
+
+</details>
+
+---
+
+## Oefening 3
+
+Schrijf een functie `is_volwassen` die een leeftijd ontvangt en `True` of `False` teruggeeft.
+
+<CodeExercise>{`def is_volwassen(leeftijd):
+    ...
+
+print(is_volwassen(20))   # True
+print(is_volwassen(15))   # False
+print(is_volwassen(18))   # True`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Je kunt direct het resultaat van een vergelijking teruggeven: `return leeftijd >= 18`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+def is_volwassen(leeftijd):
+    return leeftijd >= 18
+
+print(is_volwassen(20))   # True
+print(is_volwassen(15))   # False
+print(is_volwassen(18))   # True
+```
+
+</details>
+
+---
+
+## Oefening 4
+
+Schrijf een functie `max_van_twee` die twee getallen ontvangt en het grootste teruggeeft.
+
+<CodeExercise>{`def max_van_twee(a, b):
+    ...
+
+print(max_van_twee(10, 20))  # 20
+print(max_van_twee(7, 3))    # 7
+print(max_van_twee(5, 5))    # 5`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik een `if/else`: als `a > b`, return `a`, anders return `b`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+def max_van_twee(a, b):
+    if a > b:
+        return a
+    else:
+        return b
+
+print(max_van_twee(10, 20))  # 20
+print(max_van_twee(7, 3))    # 7
+print(max_van_twee(5, 5))    # 5
+```
+
+</details>
+
+---
+
+## Oefening 5
+
+Schrijf een functie `korting_prijs` die een prijs en een kortingspercentage ontvangt, en de nieuwe prijs teruggeeft.
+
+<CodeExercise>{`def korting_prijs(prijs, percentage):
+    ...
+
+print(korting_prijs(100, 20))  # 80.0
+print(korting_prijs(50, 10))   # 45.0
+print(korting_prijs(200, 50))  # 100.0`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+De korting is `prijs * percentage / 100`. De nieuwe prijs is `prijs - korting`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+def korting_prijs(prijs, percentage):
+    korting = prijs * percentage / 100
+    return prijs - korting
+
+print(korting_prijs(100, 20))  # 80.0
+print(korting_prijs(50, 10))   # 45.0
+print(korting_prijs(200, 50))  # 100.0
+```
+
+</details>

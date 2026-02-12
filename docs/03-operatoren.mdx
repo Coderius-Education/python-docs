@@ -1,0 +1,164 @@
+---
+sidebar_position: 3
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Rekenen
+
+In Python kun je de computer als rekenmachine gebruiken.
+
+## Rekenoperatoren
+
+| Operator | Betekenis | Voorbeeld | Resultaat |
+|----------|-----------|-----------|-----------|
+| `+` | Optellen | `5 + 3` | `8` |
+| `-` | Aftrekken | `10 - 4` | `6` |
+| `*` | Vermenigvuldigen | `3 * 7` | `21` |
+| `/` | Delen | `10 / 3` | `3.333...` |
+| `//` | Geheel delen | `10 // 3` | `3` |
+| `%` | Rest (modulo) | `10 % 3` | `1` |
+| `**` | Macht | `2 ** 3` | `8` |
+
+```python
+print(5 + 3)     # 8
+print(10 - 4)    # 6
+print(3 * 7)     # 21
+print(10 / 3)    # 3.333...
+print(10 // 3)   # 3
+print(10 % 3)    # 1
+print(2 ** 3)    # 8
+```
+
+## Rekenvolgorde
+
+Net als bij wiskunde gaat vermenigvuldigen en delen vóór optellen en aftrekken. Gebruik haakjes om de volgorde te bepalen:
+
+```python
+print(2 + 3 * 4)     # 14  (niet 20!)
+print((2 + 3) * 4)   # 20
+```
+
+## Rekenen met variabelen
+
+```python
+prijs = 12.50
+aantal = 4
+totaal = prijs * aantal
+
+print("Totaal:", totaal)  # 50.0
+```
+
+---
+
+## Oefening 1
+
+Bereken het gemiddelde van drie cijfers.
+
+<CodeExercise>{`cijfer1 = 7
+cijfer2 = 8
+cijfer3 = 6
+
+gemiddelde = ...
+
+print("Het gemiddelde is:", gemiddelde)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Het gemiddelde is de som gedeeld door het aantal. Gebruik haakjes: `(a + b + c) / 3`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+cijfer1 = 7
+cijfer2 = 8
+cijfer3 = 6
+
+gemiddelde = (cijfer1 + cijfer2 + cijfer3) / 3
+
+print("Het gemiddelde is:", gemiddelde)
+```
+
+</details>
+
+---
+
+## Oefening 2
+
+Reken 135 minuten om naar uren en resterende minuten. Gebruik `//` en `%`.
+
+<CodeExercise>{`totaal_minuten = 135
+
+uren = ...
+minuten = ...
+
+print(totaal_minuten, "minuten =", uren, "uur en", minuten, "minuten")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+`//` geeft het hele aantal uren (`135 // 60 = 2`). `%` geeft de rest (`135 % 60 = 15`).
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+totaal_minuten = 135
+
+uren = totaal_minuten // 60
+minuten = totaal_minuten % 60
+
+print(totaal_minuten, "minuten =", uren, "uur en", minuten, "minuten")
+```
+
+</details>
+
+---
+
+## Oefening 3
+
+Een winkel heeft een aanbieding: 3 broodjes voor €5. Normaal kost een broodje €2. Bereken de totaalprijs voor 7 broodjes (zo goedkoop mogelijk).
+
+<CodeExercise>{`aantal = 7
+prijs_per_stuk = 2
+aanbieding_prijs = 5
+
+# Hoeveel sets van 3 kun je kopen?
+sets = ...
+# Hoeveel losse broodjes blijven er over?
+los = ...
+
+totaal = ...
+
+print(f"{aantal} broodjes kosten: €{totaal}")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik `//` om te berekenen hoeveel sets van 3 je kunt kopen, en `%` voor het aantal losse broodjes. De totaalprijs is `sets * 5 + los * 2`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+aantal = 7
+prijs_per_stuk = 2
+aanbieding_prijs = 5
+
+sets = aantal // 3
+los = aantal % 3
+
+totaal = sets * aanbieding_prijs + los * prijs_per_stuk
+
+print(f"{aantal} broodjes kosten: €{totaal}")
+```
+
+</details>

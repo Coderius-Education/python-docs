@@ -1,0 +1,245 @@
+---
+sidebar_position: 11
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Dictionaries
+
+Een dictionary slaat waarden op met een **sleutel** (key) in plaats van een nummer. Je kunt het zien als een woordenboek: je zoekt een woord op (de sleutel) en krijgt de betekenis (de waarde).
+
+## Een dictionary maken
+
+Een dictionary maak je met `{}` en `sleutel: waarde` paren:
+
+```python
+leerling = {
+    "naam": "Sara",
+    "leeftijd": 15,
+    "klas": "3B"
+}
+
+print(leerling)
+```
+
+## Waarden opvragen
+
+Gebruik de sleutel tussen `[]` om een waarde op te vragen:
+
+```python
+leerling = {
+    "naam": "Sara",
+    "leeftijd": 15,
+    "klas": "3B"
+}
+
+print(leerling["naam"])       # Sara
+print(leerling["leeftijd"])   # 15
+```
+
+## Waarden toevoegen en veranderen
+
+```python
+leerling = {"naam": "Sara", "leeftijd": 15}
+
+# Waarde veranderen
+leerling["leeftijd"] = 16
+
+# Nieuwe sleutel toevoegen
+leerling["school"] = "Corderius"
+
+print(leerling)
+```
+
+## Controleren of een sleutel bestaat
+
+```python
+leerling = {"naam": "Sara", "leeftijd": 15}
+
+print("naam" in leerling)     # True
+print("school" in leerling)   # False
+```
+
+## Door een dictionary loopen
+
+```python
+leerling = {"naam": "Sara", "leeftijd": 15, "klas": "3B"}
+
+# Door de sleutels
+for sleutel in leerling:
+    print(sleutel)
+
+# Door sleutels én waarden
+for sleutel, waarde in leerling.items():
+    print(f"{sleutel}: {waarde}")
+```
+
+---
+
+## Oefening 1
+
+Maak een dictionary voor je favoriete film met de sleutels `"titel"`, `"jaar"` en `"score"`. Print elke waarde apart.
+
+<CodeExercise>{`film = {
+    ...
+}
+
+print(f"Titel: {film[...]}")
+print(f"Jaar: {film[...]}")
+print(f"Score: {film[...]}")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Vul de dictionary met `"titel": "...", "jaar": ..., "score": ...` en vraag de waarden op met `film["titel"]` etc.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+film = {
+    "titel": "Spider-Man",
+    "jaar": 2021,
+    "score": 8.5
+}
+
+print(f"Titel: {film['titel']}")
+print(f"Jaar: {film['jaar']}")
+print(f"Score: {film['score']}")
+```
+
+</details>
+
+---
+
+## Oefening 2
+
+Maak een dictionary met de prijzen van producten. Bereken de totaalprijs van een boodschappenlijstje.
+
+<CodeExercise>{`prijzen = {
+    "brood": 2.50,
+    "kaas": 4.00,
+    "melk": 1.20,
+    "appel": 0.80
+}
+
+boodschappen = ["brood", "melk", "appel"]
+totaal = 0
+
+for product in boodschappen:
+    totaal += ...
+
+print(f"Totaal: €{totaal:.2f}")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik `prijzen[product]` om de prijs van elk product op te zoeken.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+prijzen = {
+    "brood": 2.50,
+    "kaas": 4.00,
+    "melk": 1.20,
+    "appel": 0.80
+}
+
+boodschappen = ["brood", "melk", "appel"]
+totaal = 0
+
+for product in boodschappen:
+    totaal += prijzen[product]
+
+print(f"Totaal: €{totaal:.2f}")
+```
+
+</details>
+
+---
+
+## Oefening 3
+
+Print alle sleutels en waarden van een dictionary met een loop.
+
+<CodeExercise>{`persoon = {
+    "naam": "Daan",
+    "leeftijd": 16,
+    "hobby": "programmeren",
+    "stad": "Utrecht"
+}
+
+for ...:
+    print(f"{sleutel}: {waarde}")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik `.items()` om door sleutels en waarden tegelijk te loopen: `for sleutel, waarde in persoon.items():`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+persoon = {
+    "naam": "Daan",
+    "leeftijd": 16,
+    "hobby": "programmeren",
+    "stad": "Utrecht"
+}
+
+for sleutel, waarde in persoon.items():
+    print(f"{sleutel}: {waarde}")
+```
+
+</details>
+
+---
+
+## Oefening 4
+
+Tel hoe vaak elke letter voorkomt in een woord. Sla het resultaat op in een dictionary.
+
+<CodeExercise>{`woord = "programmeren"
+teller = {}
+
+for letter in woord:
+    if letter in teller:
+        teller[letter] += 1
+    else:
+        ...
+
+print(teller)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Als de letter al in de dictionary staat, tel je 1 op. Zo niet, maak je een nieuwe sleutel aan met waarde 1: `teller[letter] = 1`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+woord = "programmeren"
+teller = {}
+
+for letter in woord:
+    if letter in teller:
+        teller[letter] += 1
+    else:
+        teller[letter] = 1
+
+print(teller)
+```
+
+</details>

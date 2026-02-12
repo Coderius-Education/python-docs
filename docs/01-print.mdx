@@ -1,0 +1,104 @@
+---
+sidebar_position: 1
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Print en Output
+
+De `print()` functie is het eerste wat je leert in Python. Hiermee kun je tekst en waarden op het scherm tonen.
+
+## Tekst printen
+
+Om tekst te printen, zet je de tekst tussen aanhalingstekens:
+
+```python
+print("Hallo, wereld!")
+print('Dit werkt ook met enkele aanhalingstekens')
+```
+
+## Meerdere waarden printen
+
+Je kunt meerdere waarden printen door ze te scheiden met een komma:
+
+```python
+print("Mijn naam is", "Python")
+print("1 + 1 =", 2)
+```
+
+## Speciale tekens
+
+Met `\n` maak je een nieuwe regel, en met `\t` een tab:
+
+```python
+print("Regel 1\nRegel 2\nRegel 3")
+print("Naam:\tPython")
+```
+
+---
+
+## Oefening 1
+
+Schrijf een programma dat het volgende op het scherm toont:
+
+```
+Welkom bij Python!
+Mijn naam is [jouw naam]
+Ik ben [jouw leeftijd] jaar oud
+```
+
+<CodeExercise>{`# Schrijf hier je code
+print(...)
+print(...)
+print(...)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik drie aparte `print()` regels. Vergeet de aanhalingstekens niet rond je tekst!
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+print("Welkom bij Python!")
+print("Mijn naam is Lisa")
+print("Ik ben 15 jaar oud")
+```
+
+</details>
+
+---
+
+## Oefening 2
+
+Gebruik **één** `print()` regel om het volgende te tonen (gebruik `\n`):
+
+```
+Python
+is
+geweldig
+```
+
+<CodeExercise>{`# Schrijf hier je code met één print()
+print(...)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik `\n` om een nieuwe regel te maken binnen één string: `"tekst1\ntekst2"`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+print("Python\nis\ngeweldig")
+```
+
+</details>
+
+---
