@@ -6,6 +6,8 @@ import CodeExercise from '@site/src/components/CodeExercise';
 
 # While-loop
 
+![While-loop](/img/while.jpg)
+
 Met een `while`-loop herhaal je code **zolang een voorwaarde waar is**.
 
 ## While True
@@ -17,11 +19,9 @@ while True:
     print("Dit stopt nooit!")
 ```
 
-`True` is altijd waar, dus deze loop herhaalt zich eindeloos. Dit heet een **oneindige loop**. Druk op `Ctrl + C` om het programma te stoppen.
+`True` is altijd waar, dus deze loop herhaalt zich eindeloos. Dit heet een **oneindige loop**.
 
-:::tip
-`while True` is handig als basis. Later leer je hoe je de loop kunt stoppen met een voorwaarde.
-:::
+Voer de code hierboven uit en druk op `Ctrl + C` om het programma te stoppen.
 
 ## Een voorwaarde gebruiken
 
@@ -52,6 +52,25 @@ De loop herhaalt zolang `teller < 3` waar is. Bij elke herhaling wordt `teller` 
 
 </details>
 
+### Investigate
+
+Probeer de volgende aanpassingen en kijk wat er verandert:
+
+- Wat gebeurt er als je `teller < 3` verandert in `teller <= 3`?
+- Wat gebeurt er als je `teller += 1` weghaalt?
+
+<details>
+<summary>Bekijk het antwoord</summary>
+
+- Met `teller <= 3` wordt ook `3` geprint. De output wordt: `0 1 2 3`.
+- Zonder `teller += 1` verandert `teller` nooit, dus de loop stopt **nooit**. Je krijgt eindeloos `0 0 0 0...`. Dit is de meest voorkomende fout bij een `while`-loop! Druk op `Ctrl + C` om te stoppen.
+
+</details>
+
+:::warning
+Zorg er altijd voor dat de variabele in de voorwaarde **verandert** binnen de loop. Anders krijg je een oneindige loop.
+:::
+
 ## Hoe werkt het?
 
 Een `while`-loop werkt als volgt:
@@ -69,46 +88,42 @@ while teller < 3:   # Voorwaarde
     teller += 1     # Variabele aanpassen!
 ```
 
-:::warning
-Vergeet je `teller += 1`, dan blijft `teller` altijd 0 en stopt de loop **nooit**. Dit is hetzelfde als `while True`. Druk op `Ctrl + C` om het te stoppen.
-:::
-
 ## Wanneer while, wanneer for?
 
-- **`for`-loop**: als je **van tevoren weet** hoe vaak je wilt herhalen (bijv. 10 keer)
+- **`for`-loop**: als je **van tevoren weet** hoe vaak je wilt herhalen
 - **`while`-loop**: als je wilt herhalen **totdat iets verandert**
 
-## Er gaat iets mis
-
-De meest voorkomende fout bij een `while`-loop is de **oneindige loop**:
+Dezelfde taak kan op beide manieren. Print de getallen 1 tot en met 5:
 
 ```python
-getal = 1
+# Met een for-loop:
+for i in range(1, 6):
+    print(i)
 
-while getal < 10:
+# Met een while-loop:
+getal = 1
+while getal <= 5:
     print(getal)
-    # Oeps! getal wordt nooit groter...
+    getal += 1
 ```
 
-**Waarom gaat dit mis?** De variabele `getal` verandert niet, dus `getal < 10` blijft altijd `True`. De loop stopt nooit.
-
-**Oplossing:** Zorg dat de variabele in de voorwaarde verandert binnen de loop:
-
-```python
-getal = 1
-
-while getal < 10:
-    print(getal)
-    getal += 1      # Nu stopt de loop als getal 10 bereikt
-```
+De `for`-loop is korter als je het aantal herhalingen weet. De `while`-loop is flexibeler als je dat niet weet.
 
 ---
 
 ## Oefening 1
 
-Print de getallen 1 tot en met 5 met een `while`-loop.
+Print de even getallen van 2 tot en met 20 met een `while`-loop (stappen van 2).
 
-<CodeExercise>{`getal = 1
+```
+2
+4
+6
+...
+20
+```
+
+<CodeExercise>{`getal = 2
 
 while ...:
     print(getal)
@@ -117,7 +132,7 @@ while ...:
 <details>
 <summary>Tip</summary>
 
-De voorwaarde is `getal <= 5`. Vergeet niet om `getal` elke keer met 1 te verhogen.
+De voorwaarde is `getal <= 20`. Gebruik `getal += 2` om steeds 2 op te tellen.
 
 </details>
 
@@ -125,11 +140,11 @@ De voorwaarde is `getal <= 5`. Vergeet niet om `getal` elke keer met 1 te verhog
 <summary>Oplossing</summary>
 
 ```python
-getal = 1
+getal = 2
 
-while getal <= 5:
+while getal <= 20:
     print(getal)
-    getal += 1
+    getal += 2
 ```
 
 </details>
@@ -216,6 +231,40 @@ Bij elke herhaling checkt de `if` of het getal even of oneven is. Let op de **in
 
 </details>
 
+### Investigate
+
+Bekijk deze foutieve versie. Wat gaat er mis?
+
+```python
+getal = 1
+
+while getal <= 6:
+    if getal % 2 == 0:
+        print(f"{getal} is even")
+        getal += 1
+    else:
+        print(f"{getal} is oneven")
+        getal += 1
+```
+
+<details>
+<summary>Bekijk het antwoord</summary>
+
+Dit werkt toevallig nog wel, maar het is slechte code: `getal += 1` staat nu twee keer (in de `if` én de `else`). Als je per ongeluk één van de twee vergeet, krijg je een oneindige loop.
+
+Zet `getal += 1` daarom altijd **buiten** de `if`/`else`, maar nog **binnen** de `while`:
+
+```python
+while getal <= 6:
+    if getal % 2 == 0:
+        print(f"{getal} is even")
+    else:
+        print(f"{getal} is oneven")
+    getal += 1  # ← buiten de if, binnen de while
+```
+
+</details>
+
 ### Hoe ziet dat eruit?
 
 De structuur is:
@@ -287,32 +336,22 @@ while getal <= 10:
 
 ## Oefening 4
 
-Verdubbel een getal steeds totdat het groter is dan 100. Print elke stap. Als het getal op dat moment even is, print er "(even)" achter.
+Tel hoeveel even getallen er zijn van 1 tot en met 20. Print aan het einde het aantal.
 
-Bijvoorbeeld met startgetal 3:
+<CodeExercise>{`getal = 1
+teller = 0
 
-```
-3
-6 (even)
-12 (even)
-24 (even)
-48 (even)
-96 (even)
-```
-
-<CodeExercise>{`getal = 3
-
-while getal <= 100:
+while getal <= 20:
     if ...:
-        print(f"{getal} (even)")
-    else:
-        print(getal)
-    getal = getal * 2`}</CodeExercise>
+        teller += 1
+    getal += 1
+
+print(f"Aantal even getallen: {teller}")`}</CodeExercise>
 
 <details>
 <summary>Tip</summary>
 
-Gebruik `getal % 2 == 0` om te checken of het getal even is. Verdubbel met `getal = getal * 2`.
+Gebruik `getal % 2 == 0` om te checken of een getal even is. Verhoog `teller` alleen als het getal even is.
 
 </details>
 
@@ -320,14 +359,15 @@ Gebruik `getal % 2 == 0` om te checken of het getal even is. Verdubbel met `geta
 <summary>Oplossing</summary>
 
 ```python
-getal = 3
+getal = 1
+teller = 0
 
-while getal <= 100:
+while getal <= 20:
     if getal % 2 == 0:
-        print(f"{getal} (even)")
-    else:
-        print(getal)
-    getal = getal * 2
+        teller += 1
+    getal += 1
+
+print(f"Aantal even getallen: {teller}")
 ```
 
 </details>
@@ -336,48 +376,36 @@ while getal <= 100:
 
 ## Oefening 5
 
-Schrijf een programma dat de getallen 1 tot en met 20 print. Als het getal deelbaar is door 3, print "Fizz". Als het deelbaar is door 5, print "Buzz". Als het door beide deelbaar is, print "FizzBuzz".
+Verdubbel een getal steeds totdat het groter is dan 1000. Print elke stap. Als het getal groter is dan 100, print er "groot!" achter.
+
+Bijvoorbeeld met startgetal 1:
 
 ```
 1
 2
-Fizz
 4
-Buzz
-Fizz
-7
 8
-Fizz
-Buzz
-11
-Fizz
-13
-14
-FizzBuzz
 16
-17
-Fizz
-19
-Buzz
+32
+64
+128 groot!
+256 groot!
+512 groot!
 ```
 
 <CodeExercise>{`getal = 1
 
-while getal <= 20:
+while getal <= 1000:
     if ...:
-        print("FizzBuzz")
-    elif ...:
-        print("Fizz")
-    elif ...:
-        print("Buzz")
+        print(f"{getal} groot!")
     else:
         print(getal)
-    getal += 1`}</CodeExercise>
+    getal = getal * 2`}</CodeExercise>
 
 <details>
 <summary>Tip</summary>
 
-Check eerst of het getal deelbaar is door **beide** 3 en 5: `getal % 3 == 0 and getal % 5 == 0`. Dit moet als eerste staan, anders vangt `getal % 3 == 0` het al op.
+Gebruik `getal > 100` om te checken of het getal groot genoeg is. Verdubbel met `getal = getal * 2`.
 
 </details>
 
@@ -387,16 +415,12 @@ Check eerst of het getal deelbaar is door **beide** 3 en 5: `getal % 3 == 0 and 
 ```python
 getal = 1
 
-while getal <= 20:
-    if getal % 3 == 0 and getal % 5 == 0:
-        print("FizzBuzz")
-    elif getal % 3 == 0:
-        print("Fizz")
-    elif getal % 5 == 0:
-        print("Buzz")
+while getal <= 1000:
+    if getal > 100:
+        print(f"{getal} groot!")
     else:
         print(getal)
-    getal += 1
+    getal = getal * 2
 ```
 
 </details>
@@ -412,8 +436,6 @@ getal = 1
 
 while getal <= 50:
     if ...:
-        ...
-    else:
         som += getal
     getal += 1
 
@@ -422,7 +444,7 @@ print(f"De som is: {som}")`}</CodeExercise>
 <details>
 <summary>Tip</summary>
 
-Als `getal % 7 == 0` wil je het getal **niet** optellen. In het `else`-blok tel je het getal wél op bij `som`.
+Je wilt alleen optellen als het getal **niet** deelbaar is door 7. Gebruik `getal % 7 != 0`.
 
 </details>
 
@@ -434,13 +456,55 @@ som = 0
 getal = 1
 
 while getal <= 50:
-    if getal % 7 == 0:
-        pass  # sla over, tel niet mee
-    else:
+    if getal % 7 != 0:
         som += getal
     getal += 1
 
 print(f"De som is: {som}")
+```
+
+</details>
+
+---
+
+## Make: Sterrendriehoek
+
+Maak een driehoek van sterretjes met een `while`-loop. Bij `hoogte = 5`:
+
+```
+*
+**
+***
+****
+*****
+```
+
+Je hebt eerder geleerd dat `"*" * 3` het resultaat `"***"` geeft.
+
+<CodeExercise>{`hoogte = 5
+rij = 1
+
+while ...:
+    print(...)
+    ...`}</CodeExercise>
+
+<details>
+<summary>Tip</summary>
+
+Gebruik `"*" * rij` om het juiste aantal sterretjes te printen. De voorwaarde is `rij <= hoogte`.
+
+</details>
+
+<details>
+<summary>Oplossing</summary>
+
+```python
+hoogte = 5
+rij = 1
+
+while rij <= hoogte:
+    print("*" * rij)
+    rij += 1
 ```
 
 </details>
