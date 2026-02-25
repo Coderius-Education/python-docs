@@ -66,9 +66,32 @@
   min-height: 250px;
 }
 
+.gutter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.5rem;
+  padding: 1rem 0;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ifm-color-emphasis-500);
+  background: var(--ifm-color-emphasis-100);
+  border-right: 1px solid var(--ifm-color-emphasis-300);
+  text-align: right;
+  user-select: none;
+  overflow: hidden;
+  height: 100%;
+  z-index: 2;
+}
+
+.gutterLine {
+  padding-right: 0.5rem;
+}
+
 .highlightPre {
   margin: 0;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 3.5rem;
   font-family: var(--ifm-font-family-monospace);
   font-size: 0.9rem;
   line-height: 1.5;
@@ -86,7 +109,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 3.5rem;
   font-family: var(--ifm-font-family-monospace);
   font-size: 0.9rem;
   line-height: 1.5;

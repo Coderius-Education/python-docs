@@ -28,17 +28,28 @@ export function HighlightedEditor({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const preRef = useRef<HTMLPreElement>(null);
 
+  const gutterRef = useRef<HTMLDivElement>(null);
+
   const handleScroll = () => {
     if (textareaRef.current && preRef.current) {
       preRef.current.scrollTop = textareaRef.current.scrollTop;
       preRef.current.scrollLeft = textareaRef.current.scrollLeft;
     }
+    if (textareaRef.current && gutterRef.current) {
+      gutterRef.current.scrollTop = textareaRef.current.scrollTop;
+    }
   };
 
+  const lineCount = code.split('\n').length;
   const theme = colorMode === 'dark' ? themes.dracula : themes.github;
 
   return (
     <div className={styles.editorWrapper} style={{ minHeight }}>
+      <div ref={gutterRef} className={styles.gutter} aria-hidden="true">
+        {Array.from({ length: lineCount }, (_, i) => (
+          <div key={i} className={styles.gutterLine}>{i + 1}</div>
+        ))}
+      </div>
       <Highlight theme={theme} code={code} language="python">
         {({ tokens, getLineProps, getTokenProps, style }) => (
           <pre
