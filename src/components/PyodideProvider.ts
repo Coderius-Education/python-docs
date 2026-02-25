@@ -28,6 +28,54 @@ export function getPyodide(): Promise<any> {
   return pyodidePromise;
 }
 
+/**
+ * Format a Python traceback into a student-friendly error message.
+ * Example output: "Fout op regel 3\nNameError: naam 'x' is niet gedefinieerd"
+ */
+function filterTraceback(raw: string): string {
+  const lines = raw.split('\n');
+
+  // Extract the last line number from a <exec> frame
+  let lineNumber: string | null = null;
+  for (const line of lines) {
+    const match = line.match(/File "<exec>", line (\d+)/);
+    if (match) {
+      lineNumber = match[1];
+    }
+  }
+
+  // Extract the error line (e.g. "NameError: name 'x' is not defined")
+  // It's the last non-empty line that looks like "ErrorType: message"
+  let errorLine = '';
+  for (let i = lines.length - 1; i >= 0; i--) {
+    const trimmed = lines[i].trim();
+    if (trimmed && /^[A-Z]\w*(Error|Exception|Warning)/.test(trimmed)) {
+      errorLine = trimmed;
+      break;
+    }
+  }
+
+  if (!errorLine) {
+    // Fallback: use the last non-empty line
+    for (let i = lines.length - 1; i >= 0; i--) {
+      if (lines[i].trim()) {
+        errorLine = lines[i].trim();
+        break;
+      }
+    }
+  }
+
+  if (!errorLine) return raw;
+
+  const parts: string[] = [];
+  if (lineNumber) {
+    parts.push(`Fout op regel ${lineNumber}`);
+  }
+  parts.push(errorLine);
+
+  return parts.join('\n');
+}
+
 export async function runPython(pyodide: any, code: string): Promise<string> {
   pyodide.runPython(`
 import sys
@@ -36,7 +84,12 @@ sys.stdout = StringIO()
 sys.stderr = StringIO()
 `);
 
-  await pyodide.runPythonAsync(code);
+  let didError = false;
+  try {
+    await pyodide.runPythonAsync(code);
+  } catch {
+    didError = true;
+  }
 
   const stdout = pyodide.runPython('sys.stdout.getvalue()');
   const stderr = pyodide.runPython('sys.stderr.getvalue()');
@@ -45,6 +98,12 @@ sys.stderr = StringIO()
 sys.stdout = sys.__stdout__
 sys.stderr = sys.__stderr__
 `);
+
+  if (didError && stderr) {
+    // The traceback lands in stderr — filter out Pyodide internals
+    const filtered = filterTraceback(stderr);
+    return (stdout ? stdout + '\n' : '') + filtered;
+  }
 
   return stdout + (stderr ? `\n${stderr}` : '');
 }

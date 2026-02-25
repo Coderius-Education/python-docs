@@ -40,7 +40,7 @@ function CodeExerciseInner({ starterCode }: { starterCode: string }) {
       const result = await runPython(pyodideRef.current, code);
       setOutput(result);
     } catch (err: any) {
-      setOutput(`Fout:\n${err.message}`);
+      setOutput(err.message || String(err));
     } finally {
       setIsRunning(false);
     }
