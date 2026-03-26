@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'coderius-python',
+  title: 'Python Leren Programmeren — Coderius',
   tagline: 'Leer stap voor stap programmeren in Python',
   favicon: 'img/favicon.ico',
 
@@ -15,15 +15,15 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://python.coderius.nl',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'Coderius-Education', // Usually your GitHub org/user name.
+  projectName: 'python-docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
@@ -31,9 +31,26 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'nl',
+    locales: ['nl'],
   },
+
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'description',
+        content: 'Leer stap voor stap programmeren in Python. Gratis cursus met interactieve oefeningen direct in je browser.',
+      },
+    },
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'keywords',
+        content: 'python leren, python programmeren beginners, python cursus gratis, python oefeningen online',
+      },
+    },
+  ],
 
   presets: [
     [
@@ -82,6 +99,13 @@ const config: Config = {
     footer: {
       style: 'dark',
       links: [
+        {
+          title: 'Meer van Coderius',
+          items: [
+            { label: 'Maak games met Python', href: 'https://play.coderius.nl' },
+            { label: 'Python als back-end met FastAPI', href: 'https://fullstack.coderius.nl' },
+          ],
+        },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Coderius-Education, Inc. Built with Docusaurus.`,
     },
