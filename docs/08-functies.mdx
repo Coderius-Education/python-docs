@@ -1,0 +1,156 @@
+---
+sidebar_position: 9
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Functies
+
+Een functie is een blok code dat je een naam geeft. Je schrijft het één keer en kunt het daarna zo vaak hergebruiken als je wilt — zonder alles opnieuw te typen.
+
+---
+
+## Predict
+
+Bekijk de onderstaande code met twee functies. Wat denk je dat er op het scherm verschijnt? In welke volgorde worden de regels geprint?
+
+```python
+def lijn():
+    print("=" * 20)
+
+def welkom():
+    lijn()
+    print("  Welkom bij Python!")
+    lijn()
+
+print("Ik ga de functies aanroepen:")
+welkom()
+print("Dat was het!")
+```
+
+Schrijf je voorspelling op. Let goed op de volgorde!
+
+---
+
+## Run
+
+Zet de code in de [Playground](/playground) en voer het uit.
+
+<details>
+<summary>👀 Kwam dit overeen met je voorspelling?</summary>
+
+```text
+Ik ga de functies aanroepen:
+====================
+  Welkom bij Python!
+====================
+Dat was het!
+```
+
+Python voert de code van boven naar beneden uit. Maar de regels *binnen* een `def` worden pas uitgevoerd als je de functie verderop **aanroept** (met de haakjes `()`). De functie `welkom()` roept zelf ook weer de functie `lijn()` aan — functies mogen functies aanroepen!
+
+</details>
+
+---
+
+## Investigate
+
+1. Wat gebeurt er als je `welkom()` een tweede keer aanroept, nóg een keer onder `"Dat was het!"`? Dat is precies de kracht van functies: schrijf het één keer, gebruik het oneindig vaak.
+2. Verwijder de haakjes `()` achter `welkom` op de aanroepregel. Wordt er nu nog iets geprint? Waarom niet?
+3. Wat is het verschil tussen het **definiëren** (`def welkom():`) en het **aanroepen** (`welkom()`) van een functie?
+
+:::caution Let op
+De code binnen een functie móet inspringen (4 spaties), net als bij `if` en `for`. Zonder inspringen krijg je een `IndentationError`.
+:::
+
+---
+
+## Modify
+
+**Opdracht A: Maak je eigen banner**
+Verander de functies `lijn()` en `welkom()` zodat de output er als volgt uitziet. Gebruik een ander karakter (bijvoorbeeld `*` of `#`):
+
+```text
+********************
+  Mijn Game v1.0
+********************
+```
+
+<CodeExercise>{`def lijn():
+    # Pas deze regel aan
+    print("=" * 20)
+
+def welkom():
+    lijn()
+    # Pas de titel aan
+    print("  Welkom bij Python!")
+    lijn()
+
+welkom()`}</CodeExercise>
+
+**Opdracht B: Een functie-machine**
+Maak een functie `vierkant` die een vierkant van sterretjes tekent (5 breed en 5 hoog). Gebruik een for-loop *binnenin* de functie.
+
+<CodeExercise>{`def vierkant():
+    for i in range(5):
+        # Wat print je hier?
+
+vierkant()`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik `print("*" * 5)` om een rij van 5 sterretjes te printen. De for-loop herhaalt dat 5 keer.
+
+</details>
+
+---
+
+## Make
+
+### Optie 1: Gelaagde ASCII Banner (Makkelijk)
+Maak drie functies: `kop()`, `inhoud()`, en `staart()`. Combineer ze tot een mooi opgemaakte banner met een titel, een subtekst, en een afsluiting. Bijvoorbeeld:
+
+```text
+####################
+   MIJN PROGRAMMA
+####################
+Versie 1.0
+Gemaakt door: Jouw Naam
+====================
+```
+
+<CodeExercise>{`def kop():
+    # jouw code
+
+def inhoud():
+    # jouw code
+
+def staart():
+    # jouw code
+
+kop()
+inhoud()
+staart()`}</CodeExercise>
+
+### Optie 2: Meerdere vormen (Pittig)
+Maak twee functies: `driehoek(hoogte)` en `vierkant(grootte)`. De driehoek groeit per regel, het vierkant is altijd even breed als hoog. Roep ze beiden aan onder elkaar en kies zelf de grootte!
+
+<CodeExercise>{`def driehoek(hoogte):
+    for i in range(1, hoogte + 1):
+        # print sterretjes
+
+def vierkant(grootte):
+    for i in range(grootte):
+        # print sterretjes
+
+driehoek(4)
+print()
+vierkant(4)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Wait — deze functies hebben een waarde tussen de haakjes staan! Dat heet een **parameter**. In de volgende les leer je daar alles over. Voor nu: de variabele `hoogte` en `grootte` worden automatisch gevuld met het getal dat je tussen de haakjes meegeeft bij het aanroepen.
+
+</details>

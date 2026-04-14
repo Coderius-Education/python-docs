@@ -1,0 +1,288 @@
+---
+sidebar_position: 3
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Jij als variabele
+
+:::info Wat je al kent
+Je kunt tekst op het scherm tonen met `print()`. In deze les voeg je daar iets nieuws aan toe: **variabelen**. Zo wordt je visitekaartje uit les 1 een stuk slimmer.
+:::
+
+In les 1 stond je naam hardcoded in de tekst:
+
+```python
+print("Naam: Alex Jansen")
+```
+
+Wat als je naam verandert — of als je het programma wil aanpassen voor iemand anders? Dan moet je elke `print()` handmatig aanpassen. Dat is omslachtig.
+
+Met **variabelen** sla je een waarde op onder een naam. Die naam gebruik je daarna overal.
+
+## Hoe werkt een variabele?
+
+```python
+naam = "Alex Jansen"
+leeftijd = 15
+
+print(naam)
+print(leeftijd)
+```
+
+- `naam` is de **naam** van de variabele
+- `"Alex Jansen"` is de **waarde**
+- `=` slaat de waarde op in de variabele
+
+Uitvoer:
+```
+Alex Jansen
+15
+```
+
+## Datatypes
+
+Niet alle waarden zijn hetzelfde soort. Voor nu concentreren we ons op de twee belangrijkste:
+
+| Type | Voluit | Voorbeeld | Wanneer |
+|------|--------|-----------|---------|
+| `str` | String | `"Hallo"` | Tekst (altijd tussen aanhalingstekens) |
+| `int` | Integer | `15` | Geheel getal |
+
+```python
+naam = "Alex"          # str
+leeftijd = 15          # int
+```
+
+Je kunt het type opvragen met `type()`:
+
+```python
+print(type(naam))       # <class 'str'>
+print(type(leeftijd))   # <class 'int'>
+```
+
+---
+
+## Predict
+
+Wat denk je dat dit programma print? Schrijf het op.
+
+```python
+school = "Python College"
+klas = 3
+
+print(school)
+print(klas)
+```
+
+<details>
+<summary>Bekijk het antwoord</summary>
+
+```
+Python College
+3
+```
+
+Python print de **waarde** van elke variabele, niet de naam ervan.
+
+</details>
+
+---
+
+## Run
+
+Voer de code uit. Klopt het?
+
+Verander nu `klas = 3` in `klas = 4`. Wat verandert er in de uitvoer?
+
+<details>
+<summary>Bekijk het antwoord</summary>
+
+Alleen de tweede regel verandert:
+```
+Python College
+4
+```
+
+Dit is de kracht van variabelen: je past de waarde op **één plek** aan, en het programma gebruikt de nieuwe waarde overal.
+
+</details>
+
+---
+
+## Investigate
+
+Wat gebeurt er als je de variabelenamen en waarden omdraait, zoals hieronder? Probeer het uit.
+
+```python
+"Alex" = naam
+```
+
+<details>
+<summary>Bekijk het antwoord</summary>
+
+**Foutmelding:**
+```
+SyntaxError: cannot assign to literal
+```
+
+Het `=`-teken werkt maar in één richting: waarde rechts → variabelenaam links. `"Alex" = naam` is dus ongeldig.
+
+</details>
+
+---
+
+## Variabelen veranderen
+
+Je kunt de waarde van een variabele op elk moment aanpassen:
+
+```python
+score = 0
+print("Score:", score)
+
+score = 10
+print("Score:", score)
+
+score = score + 5
+print("Score:", score)
+```
+
+Uitvoer:
+```
+Score: 0
+Score: 10
+Score: 15
+```
+
+`score = score + 5` betekent: neem de huidige waarde van `score`, tel er 5 bij op, en sla het resultaat op in `score`.
+
+---
+
+## Er gaat iets mis
+
+Dit is een veelgemaakte fout:
+
+```python
+print(naam)
+naam = "Alex"
+```
+
+**Foutmelding:**
+```
+NameError: name 'naam' is not defined
+```
+
+**Waarom?**
+Je probeert `naam` te gebruiken voordat je hem hebt aangemaakt. Python voert code van boven naar beneden uit — een variabele bestaat pas ná de regel waar je hem aanmaakt.
+
+**Oplossing:** Maak de variabele aan vóór je hem gebruikt.
+
+---
+
+## Modify
+
+Het visitekaartje uit les 1 is hardcoded. Herschrijf het zodat alle gegevens in variabelen staan.
+
+<CodeExercise>{`# Sla de gegevens op in variabelen
+naam = ...
+leeftijd = ...
+school = ...
+hobby = ...
+
+# Print het visitekaartje met de variabelen
+print("=== Mijn Visitekaartje ===")
+print(naam)
+print(leeftijd)
+print(school)
+print(hobby)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Tekst (`str`) staat tussen aanhalingstekens. Getallen (`int`) niet. Dus `naam = "Alex"` en `leeftijd = 15`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+naam = "Alex Jansen"
+leeftijd = 15
+school = "Python College"
+hobby = "Muziek maken"
+
+print("=== Mijn Visitekaartje ===")
+print(naam)
+print(leeftijd)
+print(school)
+print(hobby)
+```
+
+</details>
+
+---
+
+## Make: Verbeterd visitekaartje
+
+Neem het visitekaartje van les 1 en verbeter het met variabelen. Zorg dat:
+
+1. Al je gegevens in variabelen staan (naam, leeftijd, school, hobby, afsluitzin)
+2. Je de gegevens combineert met tekst in de `print()`, zodat de uitvoer er leesbaar uitziet:
+
+```
+=== Mijn Visitekaartje ===
+Naam: Alex Jansen
+Leeftijd: 15
+School: Python College
+Hobby: Muziek maken
+Tot ziens!
+```
+
+**Bonus:** Verander daarna alleen de variabelen bovenaan en controleer dat alle `print()`-regels automatisch mee veranderen.
+
+<CodeExercise>{`# Jouw gegevens — pas alleen dit deel aan
+naam = ...
+leeftijd = ...
+school = ...
+hobby = ...
+afsluitzin = ...
+
+# Visitekaartje — dit deel hoef je niet aan te passen
+print("=== Mijn Visitekaartje ===")
+print("Naam:", naam)
+print("Leeftijd:", leeftijd)
+print("School:", school)
+print("Hobby:", hobby)
+print(afsluitzin)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+In `print()` kun je tekst en variabelen combineren met een komma: `print("Naam:", naam)`. Python voegt dan automatisch een spatie toe.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+naam = "Alex Jansen"
+leeftijd = 15
+school = "Python College"
+hobby = "Muziek maken"
+afsluitzin = "Tot ziens!"
+
+print("=== Mijn Visitekaartje ===")
+print("Naam:", naam)
+print("Leeftijd:", leeftijd)
+print("School:", school)
+print("Hobby:", hobby)
+print(afsluitzin)
+```
+
+</details>
+
+:::tip Volgende les
+Je visitekaartje print nu `Leeftijd: 15` — maar zonder opmaak. In les 4 leer je f-strings: daarmee maak je de uitvoer veel mooier. En in les 3 gaan we de computer voor je laten **rekenen**.
+:::

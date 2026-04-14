@@ -1,36 +1,70 @@
 # Er gaat iets mis!
 
-Geen paniek! Hieronder vind je de meest voorkomende fouten en hoe je ze oplost.
+Geen paniek! Fouten maken hoort bij het leren programmeren. Hieronder vind je een stappenplan om zelf fouten op te sporen, gevolgd door een overzicht van de meest voorkomende fouten.
+
 
 ---
 
-## Foutmeldingen
+## Hoe los je zélf een fout op?
 
-<details>
-<summary><strong>SyntaxError: invalid syntax</strong></summary>
+:::tip 1. Lees de laatste regel van de foutmelding
+Python vertelt je precies wat er mis is en op welke regel. Lees altijd de **laatste regel** van de foutmelding.
+```text
+Traceback (most recent call last):
+  File "main.py", line 3
+    print("Hallo"
+         ^
+SyntaxError: '(' was never closed
+```
+Dit vertelt je: op **regel 3** is een haakje niet gesloten.
+:::
 
+:::tip 2. Leg je code uit aan een ander (Rubber Ducking)
+Soms helpt het om je code regel-voor-regel hardop voor te lezen en uit te leggen wat het zou moeten doen (aan een klasgenoot, of zelfs aan een badeendje!). Vaak hoor je zelf al waar de logica niet klopt.
+:::
+
+:::tip 3. Test je code stap-voor-stap met print()
+Loop je vast? Gebruik dan `print()` om de waarde van je variabelen naar het scherm te schrijven op het punt vlak voordat het misging. 
+```python
+x = 10
+y = 3
+print(f"DEBUG: op dit moment is x {x} en y {y}")
+resultaat = x / y
+```
+:::
+
+:::tip 4. Isoleer het probleem
+Gebruik de [Playground](/playground) om een klein onderdeel van je code in isolatie te testen, in plaats van de hele applicatie keer op keer te runnen.
+:::
+
+---
+
+## Foutmeldingen (De Rode Tekst)
+
+### SyntaxError
+
+:::danger SyntaxError: invalid syntax of '(' was never closed
 Je hebt een typfout in je code. Veelvoorkomende oorzaken:
 
 ```python
 # Haakje vergeten
-print("Hallo"      # ❌ SyntaxError
+print("Hallo"      # ❌
 print("Hallo")     # ✅
 
-# Dubbele punt vergeten bij if/for/def
-if leeftijd >= 18  # ❌ SyntaxError
+# Dubbele punt vergeten (bij if/for/def)
+if leeftijd >= 18  # ❌
 if leeftijd >= 18: # ✅
 
 # Aanhalingsteken vergeten
-print("Hallo)      # ❌ SyntaxError
+print("Hallo)      # ❌
 print("Hallo")     # ✅
 ```
+:::
 
-</details>
+### IndentationError
 
-<details>
-<summary><strong>IndentationError: expected an indented block</strong></summary>
-
-De code na `if`, `for`, `def` of `else` moet inspringen met 4 spaties.
+:::danger IndentationError: expected an indented block
+De code na `if`, `for`, `def` of `else` móet inspringen met 4 spaties in Python.
 
 ```python
 # ❌ Geen inspringing
@@ -41,250 +75,196 @@ print("Volwassen")
 if leeftijd >= 18:
     print("Volwassen")
 ```
+:::
 
-</details>
+### NameError
 
-<details>
-<summary><strong>NameError: name 'x' is not defined</strong></summary>
-
-Je gebruikt een variabele die niet bestaat. Veelvoorkomende oorzaken:
+:::danger NameError: name 'x' is not defined
+Je gebruikt een variabele die niet bestaat (of waarvan de spelling afwijkt). Veelvoorkomende oorzaken:
 
 ```python
-# Typfout in de naam
-naam = "Sara"
-print(Name)         # ❌ NameError (hoofdletter!)
-print(naam)         # ✅
-
-# Variabele nog niet aangemaakt
+# Variabele nog niet aangemaakt, of pas later aangemaakt
 print(leeftijd)     # ❌ NameError
 leeftijd = 15
-print(leeftijd)     # ✅
+
+# Typfout in de naam (Hoofdletters zijn belangrijk!)
+naam = "Alex"
+print(Naam)         # ❌ NameError
 
 # Vergeten aanhalingstekens bij tekst
-print(Hallo)        # ❌ NameError
+print(Hallo)        # ❌ Python denkt nu dat Hallo een variabele is!
 print("Hallo")      # ✅
 ```
+:::
 
-</details>
+### TypeError
 
-<details>
-<summary><strong>TypeError: can only concatenate str to str</strong></summary>
-
-Je probeert tekst en een getal samen te plakken met `+`.
+:::danger TypeError: can only concatenate str to str
+Je probeert bewerkingen te doen met types die niet samen kunnen, zoals tekst (`str`) en een getal (`int`) "aan elkaar plakken" met een plusje.
 
 ```python
 leeftijd = 15
 
-# ❌ TypeError
-print("Ik ben " + leeftijd + " jaar")
+# ❌ TypeError: Python mag geen nummers en letters plussen
+print("Ik ben " + leeftijd + " jaar oud.")
 
-# ✅ Gebruik een komma
-print("Ik ben", leeftijd, "jaar")
-
-# ✅ Of een f-string
-print(f"Ik ben {leeftijd} jaar")
+# ✅ De oplossing is altijd een f-string:
+print(f"Ik ben {leeftijd} jaar oud.")
 ```
+:::
 
-</details>
+### ZeroDivisionError
 
-<details>
-<summary><strong>ZeroDivisionError: division by zero</strong></summary>
-
-Je deelt door 0, wat niet kan.
+:::danger ZeroDivisionError: division by zero
+Je deelt door 0, wat mathematisch niet kan.
 
 ```python
 # ❌ ZeroDivisionError
 print(10 / 0)
 
-# ✅ Controleer eerst
+# ✅ Controleer eerst de invoer
 if noemer != 0:
     print(10 / noemer)
 ```
+:::
 
-</details>
+### IndexError
 
-<details>
-<summary><strong>IndexError: list index out of range</strong></summary>
-
-Je probeert een element op te vragen dat niet bestaat in de lijst.
+:::danger IndexError: list index out of range
+Je probeert een element uit een lijst op te vragen die niet bestaat. Vergeet niet dat lijsten beginnen met tellen bij **0**!
 
 ```python
 namen = ["Ali", "Sara", "Daan"]
 
-# ❌ IndexError (er is geen index 3)
+# ❌ IndexError (er is geen 4e persoon op index 3!)
 print(namen[3])
 
 # ✅ Index 0, 1 of 2
 print(namen[2])     # "Daan"
-print(namen[-1])    # "Daan" (laatste)
 ```
+:::
 
-</details>
+### KeyError
 
-<details>
-<summary><strong>KeyError: 'sleutel'</strong></summary>
-
+:::danger KeyError: 'sleutel'
 Je zoekt een sleutel op die niet in de dictionary staat.
 
 ```python
 leerling = {"naam": "Sara"}
 
-# ❌ KeyError
+# ❌ KeyError (want leeftijd ontbreekt in de dictionary)
 print(leerling["leeftijd"])
 
-# ✅ Controleer eerst
+# ✅ Controleer eerst (bijvoorbeeld in een if statement)
 if "leeftijd" in leerling:
     print(leerling["leeftijd"])
 ```
-
-</details>
+:::
 
 ---
 
-## Veelgemaakte fouten
+## Bekende Bugs en Vastlopers
 
-<details>
-<summary><strong>= vs ==</strong></summary>
+### Oneindige Loop
 
-`=` slaat een waarde op, `==` vergelijkt twee waarden.
+:::warning Oneindige Loop (Browser loopt vast!)
+Je hebt per ongeluk een **Infinite Loop** gebouwd. Als dit gebeurt in de browser, loopt het tabblad helemaal vast, reageert het scherm niet meer, en moet je de pagina verversen! Dit gebeurt als je een *While-loop* start en je bent vergeten de teller in de loop groter te maken, waardoor de conditie altijd `True` blijft.
 
 ```python
-# ❌ Dit slaat 18 op in leeftijd
+# ❌ Infinite loop: 'teller' is en blijft altijd kleiner dan 5!
+teller = 0
+while teller < 5:
+    print("Deze regel print Python tot het einde der tijden...")
+
+# ✅ Vergeet teller += 1 niet aan de loop toe te voegen:
+teller = 0
+while teller < 5:
+    print("Dit wordt netjes 5 keer geprint.")
+    teller += 1
+```
+:::
+
+### = vs ==
+
+:::warning = vs ==
+`=` slaat een waarde op, `==` vergelijkt twee waarden met elkaar. Dit levert vaak bizarre resultaten of errors op.
+
+```python
+# ❌ Dit slaat de waarde 18 op in de variabele 'leeftijd' (Fout in een If-statement!)
 if leeftijd = 18:
+    print("Bingo!")
 
-# ✅ Dit vergelijkt leeftijd met 18
+# ✅ Dit vergelijkt de waarde van leeftijd met 18
 if leeftijd == 18:
+    print("Bingo!")
 ```
+:::
 
-</details>
+### Inspringen vergeten of te vroeg stoppen
 
-<details>
-<summary><strong>Inspringen vergeten</strong></summary>
-
-Code in een `if`, `for`, `def` of `else` blok **moet** inspringen.
+:::warning Inspringen vergeten of te vroeg stoppen met inspringen
+Python kent geen haakjes `{ }` voor blokken code. Code behoort pas tot de `if`, `for`, `def` of `else` met **inspringing**. 
 
 ```python
-# ❌ Fout
+# ❌ Fout: dit print het woord Error maar één keer aan het EINDE van de loop!
 for i in range(5):
-print(i)
+print("Error")
 
-# ✅ Goed
+# ✅ Goed: in de loop
 for i in range(5):
-    print(i)
+    print("Success")
 ```
+:::
 
-</details>
+### range() eindigt één eerder
 
-<details>
-<summary><strong>range() eindigt één eerder</strong></summary>
-
-`range(5)` geeft 0, 1, 2, 3, 4 — **niet** 5!
+:::warning range() eindigt één eerder
+`range(5)` geeft 0, 1, 2, 3, 4 — **niet** de 5!
 
 ```python
 # ❌ Print 0 t/m 4
 for i in range(5):
     print(i)
 
-# ✅ Print 1 t/m 5
+# ✅ Wil je 1 tot en met 5 printen? Dan stop je bij 6!
 for i in range(1, 6):
     print(i)
 ```
+:::
 
-</details>
+### Functie aanroepen zonder haakjes
 
-<details>
-<summary><strong>Aanhalingstekens vergeten bij strings</strong></summary>
-
-Tekst moet altijd tussen aanhalingstekens staan.
-
-```python
-# ❌ Python denkt dat Hallo een variabele is
-print(Hallo)
-
-# ✅
-print("Hallo")
-```
-
-</details>
-
-<details>
-<summary><strong>Functie aanroepen zonder haakjes</strong></summary>
+:::warning Functie aanroepen zonder haakjes
+Als je een zelfgemaakte (of ingebouwde) functie runt zónder de ronde haakjes `()` te gebruiken, dan slaat Python dit gewoon over zonder te klagen, of print hij dat er een functie gevonden is.
 
 ```python
 def zeg_hallo():
     print("Hallo!")
 
-# ❌ Dit doet niks (print alleen de functie zelf)
+# ❌ Dit doet niks en leidt niet tot een error (zeer frustrerende bug!)
 zeg_hallo
 
-# ✅ Met haakjes
+# ✅ Functies eisen dat de parameters direct volgen tussen haakjes
 zeg_hallo()
 ```
+:::
 
-</details>
+### print() vs return
 
-<details>
-<summary><strong>print() vs return</strong></summary>
-
-`print()` toont iets op het scherm. `return` geeft een waarde terug die je kunt opslaan.
+:::warning print() vs return
+Een variabele op het scherm printen (`print()`) betekent *niet* dat je daarna met dat resultaat door kan rekenen in andere functies. Wil je het antwoord later opslaan of hergebruiken? Dan móet je `return` gebruiken.
 
 ```python
-# ❌ Je kunt het resultaat niet opslaan
+# ❌ Je kunt het resultaat hier niet opslaan om mee door te werken
 def optellen(a, b):
     print(a + b)
 
-x = optellen(3, 5)   # x is None!
+x = optellen(3, 5)   # x heeft nu de waarde 'None'!
 
-# ✅ Met return kun je het resultaat gebruiken
+# ✅ Met return kun je het resultaat gebruiken in je code:
 def optellen(a, b):
     return a + b
 
-x = optellen(3, 5)   # x is 8
+x = optellen(3, 5)   # x is netjes 8. Je kan nu verder rekenen.
 ```
-
-</details>
-
----
-
-## Tips
-
-<details>
-<summary><strong>Lees de foutmelding!</strong></summary>
-
-Python vertelt je precies wat er mis is en op welke regel. Lees altijd de **laatste regel** van de foutmelding:
-
-```
-Traceback (most recent call last):
-  File "main.py", line 3
-    print("Hallo"
-         ^
-SyntaxError: '(' was never closed
-```
-
-Dit vertelt je: op **regel 3** is een haakje niet gesloten.
-
-</details>
-
-<details>
-<summary><strong>Test je code stap voor stap</strong></summary>
-
-Voeg `print()` toe om te zien wat je variabelen bevatten:
-
-```python
-x = 10
-y = 3
-resultaat = x / y
-
-print(f"x = {x}")
-print(f"y = {y}")
-print(f"resultaat = {resultaat}")
-```
-
-</details>
-
-<details>
-<summary><strong>Gebruik de Playground</strong></summary>
-
-Probeer kleine stukjes code uit in de [Playground](/playground) voordat je ze in je programma zet. Zo kun je snel testen of iets werkt.
-
-</details>
+:::

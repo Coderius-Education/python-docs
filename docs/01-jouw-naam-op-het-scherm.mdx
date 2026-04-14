@@ -1,0 +1,195 @@
+---
+sidebar_position: 2
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Jouw naam op het scherm
+
+Welkom bij je eerste les Python! Je schrijft je eerste programma: een digitaal visitekaartje.
+
+Om iets op het scherm te tonen, gebruik je `print()`. Dat is de eerste instructie die je leert.
+
+## Hoe werkt print()?
+
+```python
+print("Hallo, wereld!")
+```
+
+Python voert je code van **boven naar beneden** uit — elke regel is een instructie. Dit programma heeft één instructie en toont één zin.
+
+Meerdere regels? Meerdere `print()`-aanroepen:
+
+```python
+print("Hallo!")
+print("Ik leer Python.")
+print("Dit is makkelijk.")
+```
+
+Uitvoer:
+```
+Hallo!
+Ik leer Python.
+Dit is makkelijk.
+```
+
+:::caution Let op
+Tekst moet altijd **tussen aanhalingstekens** staan. Vergeet je ze, dan begrijpt Python je code niet.
+:::
+
+---
+
+## Predict
+
+Bekijk de code hieronder. Wat denk je dat er op het scherm verschijnt? Schrijf het op voordat je de code uitvoert.
+
+```python
+print("Naam: Python")
+print("Leeftijd: 30")
+print("Woonplaats: Amsterdam")
+```
+
+<details>
+<summary>Bekijk het antwoord</summary>
+
+```
+Naam: Python
+Leeftijd: 30
+Woonplaats: Amsterdam
+```
+
+Python voert elke `print()` op een aparte regel uit, van boven naar beneden.
+
+</details>
+
+---
+
+## Run
+
+Voer de code hierboven uit. Klopt de uitvoer met wat je had opgeschreven?
+
+---
+
+## Investigate
+
+Wat gebeurt er als je de volgorde van de `print()`-regels omdraait? Probeer het:
+
+```python
+print("Woonplaats: Amsterdam")
+print("Naam: Python")
+print("Leeftijd: 30")
+```
+
+<details>
+<summary>Bekijk het antwoord</summary>
+
+Python voert de regels precies in de volgorde uit zoals je ze schrijft. De uitvoer verandert mee:
+
+```
+Woonplaats: Amsterdam
+Naam: Python
+Leeftijd: 30
+```
+
+De **volgorde van je code** bepaalt de volgorde van de uitvoer.
+
+</details>
+
+---
+
+## Er gaat iets mis
+
+Dit is een veelgemaakte fout:
+
+```python
+print(Hallo!)
+```
+
+**Foutmelding:**
+```
+SyntaxError: invalid syntax
+```
+
+**Waarom?**
+Tekst die je wilt printen moet tussen aanhalingstekens staan. Python ziet `Hallo!` zonder aanhalingstekens als een naam (variabele), niet als tekst — en die naam bestaat niet.
+
+**Oplossing:** Zet aanhalingstekens om de tekst: `print("Hallo!")`.
+
+---
+
+## Modify
+
+Pas de code hieronder aan zodat de uitvoer er precies zo uitziet:
+
+```
+=== Visitekaartje ===
+Naam: [jouw naam]
+School: Python College
+```
+
+<CodeExercise>{`print("Naam: Python")
+print("School: onbekend")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Voeg een extra `print()` toe bóven de andere twee voor de titel. Vervang de tekst in de bestaande regels door jouw gegevens.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+print("=== Visitekaartje ===")
+print("Naam: [jouw naam]")
+print("School: Python College")
+```
+
+</details>
+
+---
+
+## Make: Jouw digitale visitekaartje
+
+Bouw een volledig digitaal visitekaartje. Het programma moet de volgende informatie tonen:
+
+1. Een titel (bijv. `=== Mijn Visitekaartje ===`)
+2. Je naam
+3. Je leeftijd
+4. Je school
+5. Je favoriete hobby
+6. Een afsluitzin naar keuze
+
+<CodeExercise>{`# Jouw visitekaartje hier
+print(...)
+print(...)
+print(...)
+print(...)
+print(...)
+print(...)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik zes `print()`-regels. De tekst staat altijd tussen aanhalingstekens. Je kunt een lege `print()` gebruiken als je witruimte wil toevoegen.
+
+</details>
+
+<details>
+<summary>✅ Voorbeeldoplossing</summary>
+
+```python
+print("=== Mijn Visitekaartje ===")
+print("Naam: Alex Jansen")
+print("Leeftijd: 15")
+print("School: Python College")
+print("Hobby: Muziek maken")
+print("Tot ziens!")
+```
+
+</details>
+
+:::tip Onthoud
+In de volgende les ga je dit visitekaartje verbeteren — dan hoef je niet elke keer de tekst aan te passen als iets verandert.
+:::

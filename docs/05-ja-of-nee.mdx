@@ -1,0 +1,293 @@
+---
+sidebar_position: 6
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Ja of nee?
+
+:::info Wat je al kent
+Je kunt variabelen aanmaken, rekenen, en tekst mooi opmaken met f-strings. In deze les voeg je **booleans**, **vergelijkingsoperatoren** en `if`/`else` toe — dan kan je programma beslissingen nemen.
+:::
+
+Tot nu toe deed je programma altijd precies hetzelfde, ongeacht de invoer. Maar een echte toegangscontrole moet kunnen zeggen: "Welkom!" óf "Sorry, je mag niet naar binnen." Daarvoor heb je `if` en `else` nodig.
+
+## Booleans
+
+Een boolean is een waarde die maar twee mogelijkheden heeft: `True` (waar) of `False` (niet waar).
+
+```python
+is_student = True
+heeft_kaartje = False
+
+print(is_student)    # True
+print(heeft_kaartje) # False
+```
+
+## Vergelijkingsoperatoren
+
+Met vergelijkingsoperatoren vergelijk je waarden. Het resultaat is altijd een boolean:
+
+| Operator | Betekenis | Voorbeeld | Resultaat |
+|----------|-----------|-----------|-----------|
+| `==` | gelijk aan | `5 == 5` | `True` |
+| `!=` | niet gelijk aan | `5 != 3` | `True` |
+| `<` | kleiner dan | `3 < 10` | `True` |
+| `>` | groter dan | `3 > 10` | `False` |
+| `<=` | kleiner dan of gelijk aan | `5 <= 5` | `True` |
+| `>=` | groter dan of gelijk aan | `3 >= 10` | `False` |
+
+```python
+leeftijd = 16
+print(leeftijd >= 18)  # False
+print(leeftijd < 18)   # True
+```
+
+:::caution Let op
+`=` slaat een waarde op. `==` vergelijkt twee waarden. Dit is één van de meest gemaakte fouten in Python!
+:::
+
+## if en else
+
+Met `if` voer je code uit alleen als een voorwaarde `True` is. Met `else` geef je aan wat er moet gebeuren als de voorwaarde `False` is:
+
+```python
+leeftijd = 15
+
+if leeftijd >= 18:
+    print("Je bent volwassen!")
+else:
+    print("Je bent nog minderjarig.")
+```
+
+:::caution Inspringen!
+De code ná `if` en ná `else` moet **4 spaties inspringen**. Dit is verplicht in Python — het vertelt Python welke regels bij het blok horen.
+:::
+
+---
+
+## Predict
+
+Wat print dit programma? Schrijf je antwoord op.
+
+```python
+temperatuur = 12
+
+if temperatuur >= 20:
+    print("Lekker weer, zonnebril mee!")
+else:
+    print("Pak een jas, het is fris.")
+
+print("Geniet van de dag!")
+```
+
+<details>
+<summary>Bekijk het antwoord</summary>
+
+```
+Pak een jas, het is fris.
+Geniet van de dag!
+```
+
+`12 >= 20` is `False`, dus de `else`-tak wordt uitgevoerd. De laatste `print` staat **buiten** het `if`/`else`-blok (geen inspringen), dus die wordt altijd uitgevoerd.
+
+</details>
+
+---
+
+## Run
+
+Voer de code uit. Klopt het?
+
+Verander `temperatuur = 12` in `temperatuur = 25`. Wat verandert er?
+
+<details>
+<summary>Bekijk het antwoord</summary>
+
+Nu is `25 >= 20` `True`, dus de `if`-tak wordt uitgevoerd:
+
+```
+Lekker weer, zonnebril mee!
+Geniet van de dag!
+```
+
+</details>
+
+---
+
+## Investigate
+
+Wat gebeurt er als je de inspringen weglaat? Probeer dit:
+
+```python
+leeftijd = 15
+
+if leeftijd >= 18:
+print("Je bent volwassen!")
+```
+
+<details>
+<summary>Bekijk het antwoord</summary>
+
+**Foutmelding:**
+```
+IndentationError: expected an indented block after 'if' statement
+```
+
+Python verwacht dat er minstens één ingesprongen regel ná `if` staat. Zonder inspringen weet Python niet welke code bij het `if`-blok hoort.
+
+</details>
+
+---
+
+## if zonder else
+
+Je hebt niet altijd een `else` nodig. Als je alleen iets wil doen bij een bepaalde voorwaarde:
+
+```python
+score = 80
+
+if score >= 50:
+    print("Gefeliciteerd, je bent geslaagd!")
+
+print("Je score was:", score)
+```
+
+De tweede `print` wordt altijd uitgevoerd — hij staat buiten het `if`-blok.
+
+---
+
+## Er gaat iets mis
+
+Dit is een veelgemaakte fout:
+
+```python
+leeftijd = 18
+
+if leeftijd = 18:
+    print("Je bent precies 18!")
+```
+
+**Foutmelding:**
+```
+SyntaxError: invalid syntax
+```
+
+**Waarom?**
+In een `if`-voorwaarde gebruik je `==` (vergelijking), niet `=` (toewijzing). `leeftijd = 18` is een toewijzing en mag niet in een `if`-voorwaarde staan.
+
+**Oplossing:** Gebruik `==`: `if leeftijd == 18:`.
+
+---
+
+## Revisie: variabelen + f-strings + if
+
+Je kunt alle concepten uit eerdere lessen combineren. Hier worden variabelen, f-strings én `if`/`else` samen gebruikt:
+
+```python
+naam = "Alex"
+leeftijd = 15
+
+if leeftijd >= 18:
+    print(f"Welkom, {naam}! Je bent volwassen.")
+else:
+    print(f"Hoi {naam}. Je bent {18 - leeftijd} jaar te jong.")
+```
+
+---
+
+## Modify
+
+Pas de code hieronder aan: voeg een `else` toe die toont hoeveel jaar iemand nog moet wachten.
+
+<CodeExercise>{`leeftijd = 15
+
+if leeftijd >= 18:
+    print("Je mag naar binnen!")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Je kunt berekeningen doen in een f-string: `f"Nog {18 - leeftijd} jaar te gaan."`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+leeftijd = 15
+
+if leeftijd >= 18:
+    print("Je mag naar binnen!")
+else:
+    print(f"Nog {18 - leeftijd} jaar te gaan.")
+```
+
+</details>
+
+---
+
+## Make: Toegangscontrole voor een feestje
+
+Je organiseert een feestje. Alleen mensen op de gastenlijst mogen naar binnen, én ze moeten minstens 14 jaar oud zijn.
+
+**Het programma moet:**
+1. Twee variabelen bovenaan: de naam van de gast en de leeftijd
+2. Een variabele `op_lijst` die `"ja"` of `"nee"` is
+4. Een gepersonaliseerd bericht printen: welkom of afgewezen (inclusief naam en reden)
+
+Verwachte uitvoer (welkomstscenario):
+```
+Welkom, ALEX! Veel plezier op het feestje.
+```
+
+Verwachte uitvoer (afgewezen):
+```
+Sorry Alex, je mag helaas niet naar binnen.
+```
+
+<CodeExercise>{`naam = "Alex"
+leeftijd = 15
+op_lijst = "ja"
+
+op_lijst_bool = op_lijst == "ja"
+
+if op_lijst_bool and leeftijd >= 14:
+    print(f"Welkom, {naam.upper()}! Veel plezier op het feestje.")
+else:
+    print(f"Sorry {naam}, je mag helaas niet naar binnen.")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+`op_lijst == "ja"` vergelijkt de invoer met de tekst `"ja"` en geeft `True` of `False` terug. Zo sla je het resultaat op als een boolean. Combineer daarna twee voorwaarden met `and`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+naam = "Alex"
+leeftijd = 15
+op_lijst = "ja"
+
+op_lijst_bool = op_lijst == "ja"
+
+if op_lijst_bool and leeftijd >= 14:
+    print(f"Welkom, {naam.upper()}! Veel plezier op het feestje.")
+else:
+    print(f"Sorry {naam}, je mag helaas niet naar binnen.")
+```
+
+</details>
+
+**Bonus:** Voeg een extra `print()` toe die de **reden** van afwijzing uitlegt:
+- "Je staat niet op de gastenlijst."
+- "Je bent te jong (minimumleeftijd: 14)."
+- "Je staat niet op de lijst én je bent te jong."
+
+:::tip Volgende les
+Je programma kan nu twee keuzes maken: welkom of afgewezen. Maar wat als er drie of meer opties zijn? In les 6 leer je `elif` — voor meerdere takken.
+:::

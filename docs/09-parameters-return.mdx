@@ -1,0 +1,143 @@
+---
+sidebar_position: 10
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Parameters en Return
+
+In de vorige les maakten we functies die altijd hetzelfde doen. Nu leren we functies maken die informatie **ontvangen** (parameters) en een **resultaat teruggeven** (return).
+
+---
+
+## Predict
+
+Bekijk de onderstaande code. Wat denk je dat er op het scherm verschijnt? Let goed op de variabele `resultaat` — welke waarde heeft die?
+
+```python
+def verdubbel(getal):
+    return getal * 2
+
+resultaat = verdubbel(5)
+print(f"Het resultaat is: {resultaat}")
+print(f"Zes verdubbeld is: {verdubbel(6)}")
+```
+
+Schrijf je voorspelling op voordat je verder leest.
+
+---
+
+## Run
+
+Zet de code in de [Playground](/playground) en voer het uit.
+
+<details>
+<summary>👀 Kwam dit overeen met je voorspelling?</summary>
+
+```text
+Het resultaat is: 10
+Zes verdubbeld is: 12
+```
+
+De functie `verdubbel` ontvangt een **parameter** genaamd `getal`. Wanneer je `verdubbel(5)` aanroept, wordt `getal` automatisch `5`. Vervolgens geeft `return getal * 2` de waarde `10` terug, die je dan kunt opslaan in `resultaat`.
+
+</details>
+
+---
+
+## Investigate
+
+Kopieer de volgende code naar de Playground en beantwoord de vragen:
+
+```python
+def optellen(a, b):
+    return a + b
+
+def begroet(naam):
+    print(f"Hallo, {naam}!")
+
+som = optellen(3, 5)
+print(som)
+
+x = begroet("Alex")
+print(x)
+```
+
+1. Welke waarde heeft `som`? En welke waarde heeft `x`? Voer de code uit.
+2. Waarom is `x` gelijk aan `None`? Wat is het verschil tussen `print()` en `return`?
+3. Wat gebeurt er als je `optellen(3, 5)` aanroept maar het resultaat **niet** opslaat in een variabele? Probeer: verwijder de regel `som = ...` en typ alleen `optellen(3, 5)`. Verschijnt er iets op het scherm?
+
+:::caution print() vs return
+`print()` toont iets op het scherm, maar geeft **niks** terug. `return` geeft een waarde terug die je kunt **opslaan** en later **hergebruiken**. Dit is een van de meest gemaakte fouten door beginners!
+:::
+
+---
+
+## Modify
+
+**Opdracht A: De oppervlakte-machine**
+Maak een functie `oppervlakte` die de breedte en hoogte ontvangt en de oppervlakte **teruggeeft** met `return`. Test je functie met meerdere waarden.
+
+<CodeExercise>{`def oppervlakte(breedte, hoogte):
+    # Gebruik return om breedte * hoogte terug te geven
+
+print(oppervlakte(5, 3))    # Moet 15 zijn
+print(oppervlakte(10, 10))  # Moet 100 zijn
+print(oppervlakte(7, 2))    # Moet 14 zijn`}</CodeExercise>
+
+**Opdracht B: True of False teruggeven**
+Maak een functie `is_volwassen` die een leeftijd ontvangt en `True` teruggeeft als die 18 of hoger is, anders `False`.
+
+<CodeExercise>{`def is_volwassen(leeftijd):
+    # return True als leeftijd >= 18, anders False
+
+print(is_volwassen(20))   # True
+print(is_volwassen(15))   # False
+print(is_volwassen(18))   # True`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Je kunt het resultaat van een vergelijking direct returnen: `return leeftijd >= 18`. Dit geeft automatisch `True` of `False` terug!
+
+</details>
+
+---
+
+## Make
+
+### Optie 1: Het Grootste Getal (Makkelijk)
+Schrijf een functie `max_van_twee(a, b)` die twee getallen ontvangt en het grootste teruggeeft. Gebruik een `if/else` in je functie.
+
+<CodeExercise>{`def max_van_twee(a, b):
+    # Gebruik if/else om te bepalen welke groter is
+    # return het grootste getal
+
+print(max_van_twee(10, 20))  # Moet 20 zijn
+print(max_van_twee(7, 3))    # Moet 7 zijn
+print(max_van_twee(5, 5))    # Moet 5 zijn`}</CodeExercise>
+
+### Optie 2: De Rekenmachine-API (Pittig)
+Bouw een complete rekenmachine met vier functies: `optellen(a, b)`, `aftrekken(a, b)`, `vermenigvuldigen(a, b)` en `delen(a, b)`. Elke functie geeft het resultaat terug met `return`. Bij `delen` moet je controleren of `b` niet gelijk is aan `0` (als dat zo is, return dan de tekst `"Fout: delen door 0!"`).
+
+Print aan het einde een overzicht van alle berekeningen met `a = 20` en `b = 4`.
+
+<CodeExercise>{`def optellen(a, b):
+    return a + b
+
+def aftrekken(a, b):
+    # jouw code
+
+def vermenigvuldigen(a, b):
+    # jouw code
+
+def delen(a, b):
+    # Let op: check of b niet 0 is!
+
+a = 20
+b = 4
+
+print(f"{a} + {b} = {optellen(a, b)}")
+print(f"{a} - {b} = {aftrekken(a, b)}")
+print(f"{a} x {b} = {vermenigvuldigen(a, b)}")
+print(f"{a} / {b} = {delen(a, b)}")`}</CodeExercise>
