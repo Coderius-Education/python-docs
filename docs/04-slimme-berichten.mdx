@@ -1,0 +1,287 @@
+---
+sidebar_position: 5
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Slimme berichten
+
+:::info Wat je al kent
+Je kunt variabelen aanmaken en printen, en rekenen met operatoren. In deze les maak je je uitvoer veel mooier met **f-strings** en leer je een paar handige **string-methoden**.
+:::
+
+Je rekenmachine uit les 3 werkte goed, maar de uitvoer was niet zo netjes. Soms kreeg je `2.500000000000001` in plaats van `2.5`. En je visitekaartje kan ook mooier.
+
+Met f-strings los je dat op.
+
+## f-strings
+
+Een f-string is een string die je variabelen direct kunt insluiten. Zet een `f` vóór de aanhalingstekens, en zet variabelen tussen `{}`:
+
+```python
+naam = "Alex"
+leeftijd = 15
+
+print(f"Hallo, ik ben {naam} en ik ben {leeftijd} jaar oud.")
+```
+
+Uitvoer:
+```
+Hallo, ik ben Alex en ik ben 15 jaar oud.
+```
+
+Je kunt ook **berekeningen** doen in een f-string:
+
+```python
+leeftijd = 15
+print(f"Volgend jaar ben ik {leeftijd + 1} jaar.")
+```
+
+
+
+---
+
+## Predict
+
+Wat print dit programma?
+
+```python
+product = "Appel"
+prijs = 1.5
+aantal = 3
+
+print(f"Product: {product}")
+print(f"Prijs: €{prijs}")
+print(f"Totaal: €{prijs * aantal}")
+```
+
+<details>
+<summary>Bekijk het antwoord</summary>
+
+```
+Product: Appel
+Prijs: €1.5
+Totaal: €4.5
+```
+
+In de laatste regel wordt de berekening `prijs * aantal` direct in de f-string gedaan.
+
+</details>
+
+---
+
+## Run
+
+Voer de code uit. Klopt het?
+
+Verander `aantal = 3` in `aantal = 10`. Wat zie je in de uitvoer?
+
+<details>
+<summary>Bekijk het antwoord</summary>
+
+```
+Product: Appel
+Prijs: €1.5
+Totaal: €15.0
+```
+
+Het programma berekent direct automatisch het nieuwe totaal.
+
+</details>
+
+---
+
+## String-methoden
+
+Strings hebben ingebouwde functies ("methoden") die je kunt aanroepen met een punt:
+
+```python
+tekst = "hallo wereld"
+
+print(tekst.upper())    # HALLO WERELD
+print(tekst.lower())    # hallo wereld
+print(tekst.capitalize())  # Hallo wereld
+print(len(tekst))       # 11 (inclusief spatie)
+print(tekst.replace("wereld", "python"))  # hallo python
+```
+
+---
+
+## Investigate
+
+Wat is het verschil tussen `.upper()`, `.lower()` en `.capitalize()`? Probeer dit uit:
+
+```python
+naam = "alex JANSEN"
+
+print(naam.upper())
+print(naam.lower())
+print(naam.capitalize())
+```
+
+<details>
+<summary>Bekijk het antwoord</summary>
+
+```
+ALEX JANSEN
+alex de vries
+Alex de vries
+```
+
+- `.upper()` maakt alles hoofdletter
+- `.lower()` maakt alles kleine letter
+- `.capitalize()` maakt alleen de allereerste letter een hoofdletter, de rest kleine letters
+
+:::info Let op: niets is permanent
+Deze methodes veranderen de variabele `naam` **niet** permanent. Als je `print(naam)` toevoegt aan het einde van het programma, zie je dat de originele waarde `"alex JANSEN"` nog steeds hetzelfde is. Wil je de wijziging opslaan? Overschrijf dan de variabele:
+`naam = naam.upper()`
+:::
+
+</details>
+
+---
+
+## Er gaat iets mis
+
+Dit is een veelgemaakte fout:
+
+```python
+naam = "Alex"
+leeftijd = 15
+
+print(f"Hallo {naam}, je bent {leeftijd} jaar.")
+print(f"Volgend jaar ben je {leeftijd + 1 jaar.")
+```
+
+**Foutmelding:**
+```
+SyntaxError: f-string: expecting '}'
+```
+
+**Waarom?**
+De accolade `{` is geopend maar niet gesloten. Alles tussen `{` en `}` moet geldige Python-code zijn — je kunt geen vrije tekst (zoals `jaar`) toevoegen bínnen de accolades.
+
+**Oplossing:** Zet de tekst buiten de accolades:
+
+```python
+print(f"Volgend jaar ben je {leeftijd + 1} jaar.")
+```
+
+---
+
+## Revisie: rekenmachine mooier maken
+
+Herinner je de rekenmachine van les 3? Met f-strings maak je de uitvoer veel netter. Vervang de `print("Som:", som)`-stijl door f-strings:
+
+```python
+a = 10
+b = 4
+
+som = a + b
+quotient = a / b
+
+# Oud (les 3):
+print("Som:", som)
+print("Quotiënt:", quotient)
+
+# Nieuw (met f-strings):
+print(f"Som:      {som}")
+print(f"Quotiënt: {quotient}")
+```
+
+---
+
+## Modify
+
+Pas de code hieronder aan zodat de naam in **hoofdletters** wordt getoond in de begroeting:
+
+<CodeExercise>{`naam = "Alex"
+
+print(f"Welkom, {naam}!")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik `.upper()` op de variabele `naam` bínnen de f-string: `{naam.upper()}`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+naam = "Alex"
+
+print(f"Welkom, {naam.upper()}!")
+```
+
+</details>
+
+---
+
+## Make: Gepersonaliseerde uitnodiging
+
+Bouw een programma dat een feestuitnodiging genereert. Het programma:
+
+1. Een variabele heeft voor de naam van de genodigde
+2. Een variabele heeft voor de naam van het evenement
+3. Een variabele heeft voor de datum
+4. Print een nette uitnodiging zoals hieronder
+
+Verwachte uitvoer (met variabelen "alex", "Eindfeest" en "20 juni"):
+```
+╔══════════════════════════════╗
+   Uitnodiging voor ALEX
+╚══════════════════════════════╝
+
+Je bent uitgenodigd voor: Eindfeest
+Datum: 20 juni
+
+We hopen je te zien!
+```
+
+<CodeExercise>{`naam = "Alex"
+evenement = "Eindfeest"
+datum = "20 juni"
+
+print("╔══════════════════════════════╗")
+print(f"   Uitnodiging voor {naam.upper()}")
+print("╚══════════════════════════════╝")
+print()
+print(f"Je bent uitgenodigd voor: ...")
+print(f"Datum: ...")
+print()
+print("We hopen je te zien!")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Vul de `...`-plekken in met de juiste variabelen in f-strings: `{evenement}` en `{datum}`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+naam = "Alex"
+evenement = "Eindfeest"
+datum = "20 juni"
+
+print("╔══════════════════════════════╗")
+print(f"   Uitnodiging voor {naam.upper()}")
+print("╚══════════════════════════════╝")
+print()
+print(f"Je bent uitgenodigd voor: {evenement}")
+print(f"Datum: {datum}")
+print()
+print("We hopen je te zien!")
+```
+
+</details>
+
+**Bonus:** Voeg ook de lengte van de naam toe aan het programma: `print(f"(Je naam heeft {len(naam)} letters.)")`.
+
+:::tip Volgende les
+Je programma doet nu altijd hetzelfde. In les 5 leer je `if` en `else` — dan kan je programma **beslissingen nemen** op basis van de variabelen.
+:::

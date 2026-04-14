@@ -1,0 +1,144 @@
+---
+sidebar_position: 8
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# While-loop
+
+![While-loop](/img/while.jpg)
+
+Met een `while`-loop herhaal je code **zolang een voorwaarde waar is**. Waar we in de vorige les bij de `for`-loop zagen dat je van tevoren weet hoevaak de loop runt (bijvoorbeeld 5 keer met `range(5)`), blijft een `while`-loop net zolang dóórgaan totdat de situatie wezenlijk verandert.
+
+Een simpel voorbeeld waarbij we aftellen:
+
+```python
+getal = 5
+while getal > 0:
+    print(getal)
+    getal -= 1  # Vergeet deze stap nooit, anders blijft hij voor altijd 5!
+print("Start!")
+```
+
+---
+
+## Predict
+
+Bekijk de volgende code. We mixen hier een loop met een `if`-statement. Wat denk je dat er op het scherm geprint wordt?
+
+```python
+getal = 1
+
+while getal <= 6:
+    if getal % 2 == 0:
+        print(f"{getal} is even")
+    else:
+        print(f"{getal} is oneven")
+    getal += 1
+```
+
+Let op de dubbele inspringing (4 spaties en 8 spaties). Wat doet dit met de structuur? Bespreek je theorie.
+
+---
+
+## Run
+
+Zet de code over in de [Playground](/playground) en run het.
+
+<details>
+<summary>👀 Kwam dit overeen met je voorspelling?</summary>
+
+```text
+1 is oneven
+2 is even
+3 is oneven
+4 is even
+5 is oneven
+6 is even
+```
+Bij elke herhaling checkt de `if` of het getal even of oneven is. De variabele `getal` wordt iedere ronde netjes met 1 opgehoogd, waardoor het patroon ontstaat.
+
+</details>
+
+---
+
+## Investigate
+
+Bekijk deze stiekem stukgemaakte code in de Playground. Start de code in de Playground en kijk wat er gebeurt (klik eventueel op 'Stop' als je browser begint vast te lopen!):
+
+```python
+getal = 1
+
+while getal <= 6:
+    if getal % 2 == 0:
+        print(f"{getal} is even")
+        getal += 1
+    else:
+        print(f"{getal} is oneven")
+        getal += 1
+```
+
+1. Waarom is dit levensgevaarlijke code om te schrijven? 
+2. Wat gebeurt er als je per ongeluk een van de `getal += 1` regels vergeet?
+3. Hoe voorkom je de **Infinite Loop** (oneindige loop)? Wat was de positie van de `getal += 1` in de originele code?
+
+---
+
+## Modify
+
+Tijd om te oefenen met de `while` loop. Pas je code in de Playground aan voor de volgende doelen:
+
+**Opdracht A: Bankrekening Spekken**
+We hebben een startsaldo van `50` euro. We willen iedere maand sparen totdat we minimaal `200` euro hebben. Iedere maand komt er `15` euro bij. Hoeveel maanden duurt dat?
+Gebruik een while-loop om door te rekenen totdat `saldo >= 200`.
+
+<CodeExercise>{`saldo = 50
+maanden = 0
+
+while saldo < 200:
+    # 1. Tel 15 euro bij saldo op
+    # 2. Hoog de variabele maanden met 1 op
+
+print(f"Binnen {maanden} maanden heb je je doelbedrag bereikt!")
+`}</CodeExercise>
+
+**Opdracht B: Explosie met While True**
+Soms wil je dat een programma écht eindeloos doordraait, bijvoorbeeld het beginscherm van een game, of de klok van je magnetron. Dit heet een **Oneindige Loop**.
+Je kunt zo'n loop forceren door `while True:` te typen. Maar wees gewaarschuwd: de enige manier om hem te stoppen is door letterlijk het programma te laten crashen.
+Zet de code hieronder in en probeer uit te vinden hoe je deze stopt!
+
+```python
+while True:
+    print("DANGER! KERNREACTOR OVERVERHIT!")
+```
+
+---
+
+## Make
+
+Kies één van deze twee uitdagende `while` opdrachten om te bewijzen dat je het concept snapt.
+
+### Optie 1: Verdubbelen als een virus (Makkelijk)
+Een klein computervirus begint met `1` geïnfecteerd bestand. Elke seconde verdubbelt het aantal bestanden. Print per seconde hoeveel bestanden geïnfecteerd zijn, totdat het aantal bestanden de grens van `1.000.000` passeert. Als het getal groter is dan 1.000.000, print je na je while loop: `"Systeem is gekaapt!"`.
+
+<CodeExercise>{`infecties = 1
+secondes = 0
+
+while ...:
+    # jouw logica hier
+`}</CodeExercise>
+
+### Optie 2: De Wachtwoord Brute-Forcer (Pittig)
+Een hacker wil een digitaal fietsslot kraken dat stiekem de pincode `8421` heeft. Bouw een script dat bij code `0000` begint met proberen en een `while`-loop inzet. Zolang de geprobeerde code niet gelijk is aan `8421`, hoogt het script zijn code met `1` op. Als het uiteindelijk gelukt is, print het script hoevaak de loop erover heeft gedaan.
+
+*Let op: Om het jezelf wat makkelijker te maken, doen we gewoon alsof pincodes uit simpele getallen bestaan (dus `0` in plaats van `0000`).*
+
+<CodeExercise>{`doelwit_code = 8421
+huidige_poging = 0
+aantal_pogingen = 0
+
+while ...:
+    # jouw logica hier
+
+print(f"HACK SUCCESVOL! Wachtwoord {huidige_poging} is gekraakt in {aantal_pogingen} pogingen!")
+`}</CodeExercise>

@@ -71,6 +71,7 @@ const config: Config = {
         },
         {to: '/playground', label: 'Playground', position: 'left'},
         {to: '/cheatsheet', label: 'Cheatsheet', position: 'left'},
+        {to: '/begrippenlijst', label: 'Begrippenlijst', position: 'left'},
         {to: '/hulp', label: 'Hulp', position: 'left'},
         {
           href: 'https://github.com/Coderius-Education/python-docs',

@@ -1,0 +1,124 @@
+---
+sidebar_position: 7
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# For-loop
+
+Stel je wilt de getallen 0 tot en met 4 printen. Zonder loop zou je dit regel voor regel moeten uittypen. Met een `for`-loop geef je de computer de opdracht om een stuk code meerdere keren te herhalen.
+
+:::tip
+Wil je het idee van herhaling eerst visueel oefenen? Probeer [Lightbot](https://lightbot.lu/#/level/0) — een leuke puzzelgame die je helpt het concept van een loop beter te snappen.
+:::
+
+---
+
+## Predict
+
+Kijk naar de onderstaande code. Wat denk je dat er op het scherm geprint wordt? Schrijf je voorspelling op of bespreek het met je buurman.
+
+```python
+print("Start")
+
+for i in range(5):
+    print(i)
+
+print("Klaar")
+```
+
+---
+
+## Run
+
+Neem de code over in je [Playground](/playground) en voer het uit.
+
+<details>
+<summary>👀 Kwam dit overeen met je voorspelling?</summary>
+
+Zat het getal `5` ertussen? Veel beginners denken van wel, maar `range(5)` betekent: "Kies 5 getallen, beginnend bij 0". Dat zijn dus `0, 1, 2, 3, 4`. Het printen van "Start" en "Klaar" bewijst dat de loop écht klaar is na het blok.
+
+</details>
+
+---
+
+## Investigate
+
+Hoe leest Python deze loop eigenlijk? De code `for i in range(5):` rolt zich onder water eigenlijk als volgt uit:
+
+```python
+i = 0
+print(i)
+i = 1
+print(i)
+i = 2
+print(i)
+# etc...
+```
+
+1. Waarom is het inspringen (de vier spaties) vóór `print(i)` cruciaal? Wat gebeurt er als je die spaties weghaalt?
+2. Wat is `i` eigenlijk? Probeer de naam `i` in je code eens overal te veranderen naar de naam `teller` of `getal`. Werkt het dan nog steeds?
+3. De functie `range()` kan ook een begin- én een eindgetal krijgen: `range(1, 6)`. Wat verandert er aan de output als je dat gebruikt?
+
+---
+
+## Modify
+
+Pas je code in de Playground aan om de volgende opdrachten uit te voeren:
+
+**Opdracht A: Tafel van 7**
+Pas de loop aan zodat deze niet alleen getallen print, maar de tafel van 7 genereert. Gebruik een f-string in je `print()`! Het antwoord moet er zo uit zien:
+```text
+7 x 1 = 7
+7 x 2 = 14
+...
+7 x 10 = 70
+```
+
+<CodeExercise>{`for i in range(...):
+    print(...)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+Gebruik `range(1, 11)` en een f-string: `f"7 x {i} = {7 * i}"`.
+</details>
+
+**Opdracht B: Stappen overslaan**
+De `range()` functie kent nog een geheim wapen: een derde getal voor de *stapgrootte*. Probeer dit uit: `range(0, 21, 2)`. Welke getallen worden er nu geprint? Verander je code om alleen de oneven getallen van 1 tot en met 19 te printen.
+
+---
+
+## Make
+
+Nu mag je het zelf gaan bouwen! Je kunt kiezen uit twee opdrachten.
+
+### Optie 1: De Reken-Koning (Makkelijk)
+Bereken met Python de totale som van álle getallen van 1 tot en met 100. Het antwoord is 5050.
+
+<CodeExercise>{`som = 0
+
+for i in range(1, 101):
+    # Tel hier 'i' bij de 'som' op!
+
+print(f"De uiteindelijke som is: {som}")`}</CodeExercise>
+
+### Optie 2: Driehoekjes tekenen (Pitig)
+Maak een programmaatje dat de variabele `hoogte = 5` gebruikt om een driehoek van sterretjes te tekenen. Voor elke regel tel je er een sterretje bij op. Ziet je output er zo uit?
+```text
+*
+**
+***
+****
+*****
+```
+
+<CodeExercise>{`hoogte = 5
+
+for i in range(1, hoogte + 1):
+    # Wat ga je hier printen? 
+`}</CodeExercise>
+
+<details>
+<summary>💡 Giga-Tip voor Optie 2</summary>
+Wist je dat je strings kan vermenigvuldigen? `"*" * 3` geeft `"***"`! Gebruik dus `"*" * i`.
+</details>

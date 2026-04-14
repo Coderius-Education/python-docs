@@ -1,0 +1,176 @@
+---
+sidebar_position: 12
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Dictionaries
+
+Een dictionary slaat waarden op met een **sleutel** (key) in plaats van een volgnummer. Je kunt het zien als een woordenboek: je zoekt een woord op (de sleutel) en krijgt de betekenis (de waarde).
+
+---
+
+## Predict
+
+Bekijk de onderstaande code. Wat denk je dat er op het scherm verschijnt? Hoeveel regels output verwacht je?
+
+```python
+leerling = {
+    "naam": "Sara",
+    "leeftijd": 15,
+    "klas": "3B"
+}
+
+print(leerling["naam"])
+leerling["leeftijd"] = 16
+leerling["hobby"] = "programmeren"
+
+print(leerling["leeftijd"])
+print(leerling["hobby"])
+print(len(leerling))
+```
+
+Schrijf je voorspelling op voordat je verder leest.
+
+---
+
+## Run
+
+Zet de code in de [Playground](/playground) en voer het uit.
+
+<details>
+<summary>👀 Kwam dit overeen met je voorspelling?</summary>
+
+```text
+Sara
+16
+programmeren
+4
+```
+
+Met `leerling["leeftijd"] = 16` verander je een bestaande waarde. Met `leerling["hobby"] = "programmeren"` voeg je een compleet **nieuwe** sleutel toe. De dictionary groeit dus van 3 naar 4 items, vandaar dat `len()` nu `4` geeft.
+
+</details>
+
+---
+
+## Investigate
+
+Kopieer de volgende code naar de Playground en beantwoord de vragen:
+
+```python
+leerling = {"naam": "Sara", "leeftijd": 15, "klas": "3B"}
+
+# Methode 1: Alleen de sleutels
+for sleutel in leerling:
+    print(sleutel)
+
+print()
+
+# Methode 2: Sleutels én waarden
+for sleutel, waarde in leerling.items():
+    print(f"{sleutel}: {waarde}")
+
+print()
+
+# Check of een sleutel bestaat
+print("naam" in leerling)
+print("school" in leerling)
+```
+
+1. Wat is het verschil tussen `for sleutel in leerling:` en `for sleutel, waarde in leerling.items():`?
+2. Wat geeft `"school" in leerling` terug? Waarom?
+3. Wat gebeurt er als je `print(leerling["school"])` probeert op te vragen terwijl die sleutel niet bestaat? (Probeer het!)
+
+---
+
+## Modify
+
+**Opdracht A: Je favoriete film**
+Maak een dictionary voor je favoriete film met de sleutels `"titel"`, `"jaar"` en `"score"`. Print elke waarde apart met een f-string.
+
+<CodeExercise>{`film = {
+    # Vul hier je favoriete film in
+}
+
+print(f"Titel: {film['titel']}")
+print(f"Jaar: {film['jaar']}")
+print(f"Score: {film['score']}")`}</CodeExercise>
+
+**Opdracht B: Letters tellen**
+Tel hoe vaak elke letter voorkomt in een woord. Sla het resultaat op in een dictionary.
+
+<CodeExercise>{`woord = "programmeren"
+teller = {}
+
+for letter in woord:
+    if letter in teller:
+        teller[letter] += 1
+    else:
+        # Maak een nieuwe sleutel aan met waarde 1
+
+print(teller)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Als de letter nog niet in de dictionary staat, maak je hem aan: `teller[letter] = 1`. Als hij er al wél in staat, tel je er 1 bij op.
+
+</details>
+
+---
+
+## Make
+
+### Optie 1: Profiel Printer (Makkelijk)
+Maak een dictionary met minstens 5 sleutels over jezelf (naam, leeftijd, hobby, stad, favoriete eten). Gebruik een `for`-loop met `.items()` om een nette profielkaart te printen.
+
+<CodeExercise>{`profiel = {
+    "naam": "Jouw naam",
+    "leeftijd": 15,
+    "hobby": "Jouw hobby",
+    "stad": "Jouw stad",
+    "favoriete eten": "Jouw eten"
+}
+
+print("=== Mijn Profiel ===")
+for sleutel, waarde in profiel.items():
+    # Print elke sleutel en waarde op een mooie manier
+print("====================")`}</CodeExercise>
+
+### Optie 2: Het Digitale Winkelmandje (Pittig)
+Dit is de eindbaas van de basiscursus! Bouw een digitaal winkelmandje met een dictionary van producten en prijzen. Schrijf een functie `bereken_totaal(mandje)` die met een for-loop door het mandje loopt en de totaalprijs berekent en teruggeeft met `return`.
+
+Je combineert hier alles wat je geleerd hebt: **dictionaries**, **for-loops**, **functies**, **parameters**, **return** en **f-strings**!
+
+<CodeExercise>{`# De winkel: product -> prijs
+winkel = {
+    "Brood": 2.50,
+    "Kaas": 4.00,
+    "Melk": 1.20,
+    "Appel": 0.80,
+    "Chocola": 3.50
+}
+
+# Het mandje: product -> aantal
+mandje = {
+    "Brood": 2,
+    "Melk": 1,
+    "Chocola": 3
+}
+
+def bereken_totaal(winkel, mandje):
+    totaal = 0
+    for product, aantal in mandje.items():
+        # Zoek de prijs op in de winkel-dictionary
+        # Reken uit: prijs * aantal
+        # Tel het op bij totaal
+    return totaal
+
+# Print een kassabon
+print("=== Kassabon ===")
+for product, aantal in mandje.items():
+    prijs = winkel[product]
+    print(f"  {product} x{aantal}  ->  {prijs * aantal} euro")
+print("================")
+print(f"Totaal: {bereken_totaal(winkel, mandje)} euro")`}</CodeExercise>

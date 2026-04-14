@@ -1,0 +1,153 @@
+---
+sidebar_position: 11
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# Lijsten
+
+Een lijst (`list`) is een variabele waarin je meerdere waarden tegelijk opslaat, in een vaste volgorde. Denk aan een boodschappenlijstje, een klassenslijst, of een reeks cijfers.
+
+---
+
+## Predict
+
+Bekijk de onderstaande code. Wat denk je dat er op het scherm verschijnt? Let goed op de nummering: bij welk getal begint Python te tellen?
+
+```python
+kleuren = ["rood", "groen", "blauw", "geel"]
+
+print(kleuren[0])
+print(kleuren[2])
+print(kleuren[-1])
+print(len(kleuren))
+```
+
+Schrijf je voorspelling op voordat je verder leest.
+
+---
+
+## Run
+
+Zet de code in de [Playground](/playground) en voer het uit.
+
+<details>
+<summary>👀 Kwam dit overeen met je voorspelling?</summary>
+
+```text
+rood
+blauw
+geel
+4
+```
+
+Python telt altijd vanaf **0**! Dus `kleuren[0]` is "rood" (het eerste element), `kleuren[2]` is "blauw" (het derde element). Met `[-1]` pak je altijd het **laatste** element. En `len()` geeft het totaal aantal elementen.
+
+</details>
+
+---
+
+## Investigate
+
+Kopieer de volgende code naar de Playground en beantwoord de vragen:
+
+```python
+dieren = ["kat", "hond", "vis"]
+
+dieren.append("vogel")
+print(dieren)
+
+dieren.remove("hond")
+print(dieren)
+
+laatste = dieren.pop()
+print(f"Verwijderd: {laatste}")
+print(dieren)
+```
+
+1. Wat doet `.append()`? Waar komt het nieuwe element terecht (aan het begin of het einde)?
+2. Wat doet `.remove()`? Wat gebeurt er als je een element probeert te verwijderen dat niet in de lijst staat?
+3. Wat doet `.pop()`? Wat is het verschil met `.remove()`?
+4. Probeer ook eens: `dieren.insert(0, "hamster")`. Wat doet dit?
+
+---
+
+## Modify
+
+**Opdracht A: Door een lijst loopen**
+Je hebt een lijst met vruchten. Gebruik een `for`-loop om voor elke vrucht een zin te printen.
+
+<CodeExercise>{`vruchten = ["appel", "banaan", "kers", "mango"]
+
+for vrucht in vruchten:
+    # Print: "Ik hou van [vrucht]!"
+`}</CodeExercise>
+
+**Opdracht B: Cijfergemiddelde berekenen**
+Gegeven een lijst met cijfers, bereken het gemiddelde en tel hoeveel cijfers een voldoende zijn (5.5 of hoger).
+
+<CodeExercise>{`cijfers = [7, 4, 8, 5, 9, 3, 6, 8, 5, 7]
+
+gemiddelde = sum(cijfers) / len(cijfers)
+
+aantal_voldoende = 0
+for cijfer in cijfers:
+    # Tel hier de voldoendes (>= 5.5)
+
+print(f"Gemiddelde: {gemiddelde}")
+print(f"Aantal voldoendes: {aantal_voldoende}")`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Gebruik `if cijfer >= 5.5:` in je loop en `aantal_voldoende += 1` om te tellen.
+
+</details>
+
+---
+
+## Make
+
+### Optie 1: Unieke Waarden Filter (Makkelijk)
+Gegeven een lijst met dubbele waarden, maak een nieuwe lijst die alleen de unieke waarden bevat. Loop door de originele lijst en voeg een getal alleen toe aan de nieuwe lijst als het er nog niet in zit.
+
+<CodeExercise>{`getallen = [1, 3, 5, 3, 7, 1, 9, 5, 3]
+
+uniek = []
+for getal in getallen:
+    # Voeg 'getal' alleen toe als het nog NIET in 'uniek' zit
+    # Tip: gebruik 'if getal not in uniek:'
+
+print(f"Origineel: {getallen}")
+print(f"Uniek: {uniek}")`}</CodeExercise>
+
+### Optie 2: De To-Do Lijst Manager (Pittig)
+Bouw een to-do lijst met een lege lijst en drie functies:
+- `toon_taken(taken)` — print alle taken met een nummer ervoor
+- `voeg_toe(taken, taak)` — voegt een taak toe aan de lijst
+- `verwijder(taken, nummer)` — verwijdert de taak op het opgegeven nummer
+
+<CodeExercise>{`def toon_taken(taken):
+    print("=== Mijn To-Do Lijst ===")
+    for i in range(len(taken)):
+        print(f"  {i + 1}. {taken[i]}")
+    print()
+
+def voeg_toe(taken, taak):
+    # Voeg de taak toe aan de lijst met .append()
+    # Print een bevestigingsbericht
+
+def verwijder(taken, nummer):
+    # Verwijder de taak op positie (nummer - 1)
+    # Denk eraan: de gebruiker telt vanaf 1, Python vanaf 0!
+
+# Test je functies:
+mijn_taken = []
+
+voeg_toe(mijn_taken, "Python oefenen")
+voeg_toe(mijn_taken, "Boodschappen doen")
+voeg_toe(mijn_taken, "Kamer opruimen")
+toon_taken(mijn_taken)
+
+verwijder(mijn_taken, 2)
+toon_taken(mijn_taken)`}</CodeExercise>

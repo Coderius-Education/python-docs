@@ -1,0 +1,243 @@
+---
+sidebar_position: 4
+---
+
+import CodeExercise from '@site/src/components/CodeExercise';
+
+# De rekenmachine
+
+:::info Wat je al kent
+Je weet hoe je variabelen aanmaakt (`naam = "Alex"`, `leeftijd = 15`) en hoe je ze print. In deze les leer je iets nieuws: **rekenoperatoren** (zodat Python voor je rekent).
+:::
+
+Tot nu toe stonden alle waarden direct in je programma, maar we deden er niets mee. Aan het einde van deze les bouw je een handige rekenmachine die automatisch alle uitkomsten berekent als je de variabelen aanpast.
+
+## Rekenoperatoren
+
+Python kan rekenen als een calculator:
+
+| Operator | Betekenis | Voorbeeld | Resultaat |
+|----------|-----------|-----------|-----------|
+| `+` | Optellen | `5 + 3` | `8` |
+| `-` | Aftrekken | `10 - 4` | `6` |
+| `*` | Vermenigvuldigen | `3 * 7` | `21` |
+| `/` | Delen | `10 / 4` | `2.5` |
+| `//` | Geheel delen | `10 // 3` | `3` |
+| `%` | Rest (modulo) | `10 % 3` | `1` |
+| `**` | Macht | `2 ** 3` | `8` |
+
+```python
+print(5 + 3)    # 8
+print(10 // 3)  # 3  (hoe vaak past 3 in 10?)
+print(10 % 3)   # 1  (wat blijft er over?)
+```
+
+## Rekenen met variabelen
+
+Je kunt je variabelen uit les 2 direct gebruiken in berekeningen:
+
+```python
+prijs = 12.50
+aantal = 4
+totaal = prijs * aantal
+
+print("Totaal:", totaal)  # 50.0
+```
+
+## Rekenvolgorde
+
+Net als bij wiskunde: vermenigvuldigen en delen gaan vóór optellen en aftrekken. Gebruik haakjes om de volgorde te sturen:
+
+```python
+print(2 + 3 * 4)    # 14  (niet 20!)
+print((2 + 3) * 4)  # 20
+```
+
+---
+
+## Predict
+
+Wat print dit programma? Schrijf je antwoord op.
+
+```python
+a = 10
+b = 3
+
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+print(a // b)
+print(a % b)
+```
+
+<details>
+<summary>Bekijk het antwoord</summary>
+
+```
+13
+7
+30
+3.3333333333333335
+3
+1
+```
+
+Let op het verschil tussen `/` (geeft altijd een decimaal: `3.333...`) en `//` (geeft alleen het gehele gedeelte: `3`). En `%` geeft de **rest**: 10 gedeeld door 3 is 3, rest 1.
+
+</details>
+
+---
+
+## Run
+
+Voer de code uit en controleer je antwoord.
+
+---
+
+## Investigate
+
+Wat is het verschil tussen `10 / 2` en `10 // 2`? En wat doet `10 % 2`?
+
+```python
+print(10 / 2)
+print(10 // 2)
+print(10 % 2)
+```
+
+<details>
+<summary>Bekijk het antwoord</summary>
+
+```
+5.0
+5
+0
+```
+
+- `10 / 2` geeft `5.0` — altijd een `float`, ook als het resultaat een geheel getal is
+- `10 // 2` geeft `5` — altijd een `int`
+- `10 % 2` geeft `0` — de rest is 0, dus 10 is exact deelbaar door 2
+
+Dit is waarom `%` handig is om te controleren of een getal **even** is: als `getal % 2 == 0`, dan is het even.
+
+</details>
+
+---
+
+
+## Modify
+
+Pas de rekenmachine hieronder aan zodat hij ook het **verschil** en de **rest na deling** toont.
+
+<CodeExercise>{`a = 20
+b = 6
+
+som = a + b
+product = a * b
+
+print("Som:", som)
+print("Product:", product)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+Voeg twee nieuwe variabelen toe: `verschil = a - b` en `rest = a % b`. Voeg daarna twee `print()`-regels toe.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+a = 20
+b = 6
+
+som = a + b
+product = a * b
+verschil = a - b
+rest = a % b
+
+print("Som:", som)
+print("Product:", product)
+print("Verschil:", verschil)
+print("Rest:", rest)
+```
+
+</details>
+
+---
+
+## Make: Jouw interactieve rekenmachine
+
+Bouw een rekenmachine die:
+
+1. Twee getallen als variabelen aanmaakt (bijv. `a = 10` en `b = 4`)
+2. De **som**, het **verschil**, het **product** en het **quotiënt** berekent
+3. Alles netjes op het scherm toont
+
+Verwachte uitvoer (als `a = 10` en `b = 4`):
+```
+=== Rekenmachine ===
+Getal 1: 10
+Getal 2: 4
+
+Som:      14
+Verschil: 6
+Product:  40
+Quotiënt: 2.5
+```
+
+<CodeExercise>{`# Stap 1: je getallen
+a = 10
+b = 4
+
+# Stap 2: bereken
+som = ...
+verschil = ...
+product = ...
+quotient = ...
+
+# Stap 3: toon het resultaat
+print("=== Rekenmachine ===")
+print("Getal 1:", a)
+print("Getal 2:", b)
+print()
+print("Som:     ", som)
+print("Verschil:", verschil)
+print("Product: ", product)
+print("Quotiënt:", quotient)`}</CodeExercise>
+
+<details>
+<summary>💡 Tip</summary>
+
+`print()` zonder tekst print een lege regel — handig voor witruimte. Het quotiënt is gewone deling: `a / b`.
+
+</details>
+
+<details>
+<summary>✅ Oplossing</summary>
+
+```python
+a = 10
+b = 4
+
+som = a + b
+verschil = a - b
+product = a * b
+quotient = a / b
+
+print("=== Rekenmachine ===")
+print("Getal 1:", a)
+print("Getal 2:", b)
+print()
+print("Som:     ", som)
+print("Verschil:", verschil)
+print("Product: ", product)
+print("Quotiënt:", quotient)
+```
+
+</details>
+
+:::tip Volgende les
+De uitvoer van je rekenmachine is functioneel maar nog niet heel erg mooi opgemaakt. In les 4 leer je **f-strings** — daarmee weef je tekst en variabelen moeiteloos aan elkaar!
+:::
